@@ -1,12 +1,14 @@
 #include "Receiver.h"
 
 HardwareSerial serial(1);
+
 oem7::Receiver gnss(serial);
 
 void setup()
 {
   Serial.begin(115200);
-  gnss.begin(115200, 5, 18);
+  serial.begin(115200, SERIAL_8N1, 5, 18);
+  gnss.begin();
 }
 
 void loop()

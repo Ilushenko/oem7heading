@@ -3,12 +3,17 @@
 ///	\copyright  &copy; https://github.com/Ilushenko Oleksandr Ilushenko 
 ///	\author     Oleksandr Ilushenko
 /// \date       2024
-
 #ifndef __OEM7_RECEIVER_H__
 #define __OEM7_RECEIVER_H__
 
 #include "oem7.h"
+#if defined(ESP8266) || defined(ESP32)
 #include "HardwareSerial.h"
+#define SERIALPORT HardwareSerial
+#else
+#include <serialib.h>
+#define SERIALPORT serialib
+#endif
 
 namespace oem7 {
     /// \class oem7::Receiver Receiver.h
@@ -21,18 +26,18 @@ namespace oem7 {
     public:
         /// \brief Constructor
         /// \param serial Serial interface reference
-        explicit Receiver(HardwareSerial& serial);
+        explicit Receiver(SERIALPORT& serial);
         /// \brief Destructor
         ~Receiver() {}
     public:
         /// \brief Starting working GNSS module
-        /// \details Call this method in \b setup function of program
-        /// \param baud Boud Rate
-        /// \param rxPin RX Pin
-        /// \param txPin TX Pin
-        void begin(const unsigned long baud, const uint8_t rxPin, const uint8_t txPin);
+        /// \details Call this method at the beginning of the program
+        void begin();
+        /// \brief Stop working GNSS module
+        /// \details Call this method at the end of the program
+        void stop();
         /// \brief Update data of GNSS module
-        /// \details Call this method in \b loop function of program
+        /// \details To be called in the main program loop
         void update();
     public:
         /// \return Data valid flag
@@ -133,7 +138,7 @@ namespace oem7 {
             return crc;
         }
     private:
-        HardwareSerial& _serial;
+        SERIALPORT& _serial;
         bool _valid{ false };
         bool _jamming{ false };
         bool _spoofing{ false };
@@ -144,4 +149,4 @@ namespace oem7 {
     };
 }
 
-#endif
+#endif // __OEM7_RECEIVER_H__

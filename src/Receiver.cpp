@@ -1,25 +1,48 @@
 #include "Receiver.h"
 
 #ifdef DEBUGLOG
-# define xLog(fmt, ...) Serial.printf(fmt, ##__VA_ARGS__)
-# define xDebug(fmt, ...) Serial.printf("[%s %s:%i] ", __FUNCTION__, __FILENAME__, __LINE__); Serial.printf(fmt, ##__VA_ARGS__)
+# if defined(ESP8266) || defined(ESP32)
+#  define xLog(fmt, ...) Serial.printf(fmt, ##__VA_ARGS__)
+#  define xDebug(fmt, ...) Serial.printf("[%s %s:%i] ", __FUNCTION__, __FILENAME__, __LINE__); Serial.printf(fmt, ##__VA_ARGS__)
+# else
+# include <cstdio>
+#  ifdef _WIN32
+#   define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+#  else
+#   define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#  endif // _WIN32
+#  define xLog(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#  define xDebug(fmt, ...) printf("[%s %s:%i] ", __FUNCTION__, __FILENAME__, __LINE__); printf(fmt, ##__VA_ARGS__)
+# endif
 #else
+# ifdef _WIN32
+#  pragma warning(push)
+#  pragma warning(disable : 4390)
+# endif
 # define xLog(fmt, ...)
 # define xDebug(fmt, ...)
 #endif
 
-oem7::Receiver::Receiver(HardwareSerial &serial) : _serial(serial)
+oem7::Receiver::Receiver(SERIALPORT& serial) : _serial(serial)
 {
 }
 
-void oem7::Receiver::begin(const unsigned long baud, const uint8_t rxPin, const uint8_t txPin)
+void oem7::Receiver::begin()
 {
-    _serial.begin(baud, SERIAL_8N1, rxPin, txPin);
-	setCommand("UNLOGALL COM1 TRUE");
+	setCommand("UNLOGALL TRUE");
+	// Change baud rate
+	// setCommand("SERIALCONFIG COM1 115200 N 8 1 N ON");
+	// delay(1000);
+	// _serial.begin(115200, SERIAL_8N1, 5, 18);
 	setCommand("LOG COM1 RXSTATUSB ONTIME 1");
 	setCommand("LOG COM1 TIMEB ONTIME 1");
 	setCommand("LOG COM1 BESTPOSB ONTIME 1");
 	setCommand("LOG COM1 HEADING2B ONNEW");
+}
+
+void oem7::Receiver::stop()
+{
+	setCommand("UNLOGALL TRUE");
 }
 
 void oem7::Receiver::update()
@@ -94,16 +117,31 @@ void oem7::Receiver::update()
 void oem7::Receiver::setCommand(const char *cmd)
 {
 	// Write Abbreviated ASCII Command.
+#if defined(ESP8266) || defined(ESP32)
 	_serial.write(cmd, strlen(cmd));
 	_serial.write("\n", 1);
+#else
+	_serial.writeBytes(cmd, strlen(cmd));
+	_serial.writeBytes("\n", 1);
+	auto yield = [&]() {
+#ifdef WIN32
+		::Sleep(0);
+#else
+		usleep(0);
+#endif
+	};
+#endif
 	xLog(">%s\n", cmd);
-	// Read Abbreviated ASCII Response. Example \r\n<OK\r\n[COM1]
-	while (_serial.available() <= 0) { yield(); }
+	// Read Abbreviated ASCII Response. Example: \r\n<OK\r\n[COM1]
+	unsigned long ms = millis();
+	while (_serial.available() <= 0) { 
+		if (millis() - ms > 2000) break;
+		yield();		
+	}
 	uint8_t data = 0;
 	while (_serial.available() > 0) {
-		data = static_cast<uint8_t>(_serial.read());
-		if (data != 0x0D && data != 0x0A)
-		xLog("%c", data);
+		if (_serial.readBytes(&data, 1) != 1) continue;
+		if (data != 0x0D && data != 0x0A) xLog("%c", data);
 	}
 	xLog("\n");
 }
@@ -334,11 +372,11 @@ bool oem7::Receiver::checkRTK()
 		err++;
 	}
 	if (_rxstatus.aux4stat & 0x00008000) {
-		xLog("AUX4 WARNING! <15\%% of expected corrections available\n");
+		xLog("AUX4 WARNING! <15%% of expected corrections available\n");
 		err++;
 	}
 	else if (_rxstatus.aux4stat & 0x00004000) {
-		xLog("AUX4 WARNING! <60\%% of expected corrections available\n");
+		xLog("AUX4 WARNING! <60%% of expected corrections available\n");
 		err++;
 	}
 	if (_rxstatus.aux4stat & 0x00010000) {
@@ -422,3 +460,9 @@ bool oem7::Receiver::checkSpoofing()
 {
     return _rxstatus.rxstat & 0x00000200;
 }
+
+#ifndef DEBUGLOG
+# ifdef _WIN32
+#  pragma warning(pop)
+# endif
+#endif

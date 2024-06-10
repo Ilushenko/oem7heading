@@ -3,11 +3,20 @@
 ///	\copyright  &copy; https://github.com/Ilushenko Oleksandr Ilushenko 
 ///	\author     Oleksandr Ilushenko
 /// \date       2024
-
 #ifndef __OEM7_H__
 #define __OEM7_H__
 
+#if defined(ESP8266) || defined(ESP32)
 #include "Arduino.h"
+#else
+#include <stdint.h>
+#endif
+
+#ifdef WIN32
+#define ATTR_PACKED
+#else
+#define ATTR_PACKED __attribute__((__packed__))
+#endif
 
 /// \namespace oem7 NovAtel OEM7 Protocol
 /// \brief Provides working OEM7 receiver
@@ -116,11 +125,14 @@ namespace oem7 {
         POS_INS_PPP_BASIC_CONV	= 79, ///< INS position, where the last applied position update used a converging TerraStar-L PPP (PPP_BASIC) solution
         POS_INS_PPP_BASIC		= 80, ///< INS position, where the last applied position update used a converged TerraStar-L PPP (PPP_BASIC) solution
     };
+#ifdef WIN32
+#pragma pack(push,1)
+#endif
     /// \struct oem7::Head oem7.h
     /// \brief Binary message header structure
     /// \details Using for parsing OEM7 messages
     /// \details https://docs.novatel.com/OEM7/Content/Messages/Binary.htm
-    struct __attribute__((__packed__)) Head {
+    struct ATTR_PACKED Head {
         uint16_t msgId;				///< Message ID
         uint8_t msgType;			///< Message Type
         uint8_t portAddress;		///< Port Address
@@ -138,7 +150,7 @@ namespace oem7 {
     /// \brief RXSTATUS Binary structure
     /// \details Receiver status
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm
-    struct __attribute__((__packed__)) RxStatus {
+    struct ATTR_PACKED RxStatus {
         uint32_t error;				///< Receiver error
         uint32_t numStats;			///< Number of status codes (including Receiver Status).
         uint32_t rxstat;			///< Receiver status word
@@ -166,7 +178,7 @@ namespace oem7 {
     /// \brief TIME Binary structure
     /// \details Time data
     /// \details https://docs.novatel.com/OEM7/Content/Logs/TIME.htm
-    struct __attribute__((__packed__)) Time {
+    struct ATTR_PACKED Time {
         uint32_t clock_status;		///< Clock model status
         double offset;				///< Receiver clock offset in seconds from GPS system time
         double offset_std;			///< Receiver clock offset standard deviation (s)
@@ -183,7 +195,7 @@ namespace oem7 {
     /// \brief BESTPOS Binary structure
     /// \details Best position
     /// \details https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm
-    struct __attribute__((__packed__)) BestPos {
+    struct ATTR_PACKED BestPos {
         uint32_t solutionStatus;	///< Solution status
         uint32_t positionType;		///< Position type
         double lat;					///< Latitude (degrees)
@@ -210,7 +222,7 @@ namespace oem7 {
     /// \brief HEADING2 Binary structure
     /// \details Heading information with multiple rovers
     /// \details https://docs.novatel.com/OEM7/Content/Logs/HEADING2.htm
-    struct __attribute__((__packed__)) Heading2 {
+    struct ATTR_PACKED Heading2 {
         uint32_t solutionStatus;	///< Solution status
         uint32_t positionType;		///< Position type
         float length;				///< Baseline length in metres
@@ -230,6 +242,9 @@ namespace oem7 {
         uint8_t gbdMask;			///< Galileo and BeiDou signals used mask
         uint8_t gpsMask;			///< GPS and GLONASS signals used mask
     };
+#ifdef WIN32
+#pragma pack(pop)
+#endif
 }
 
 #endif // __OEM7_H__

@@ -1,3 +1,8 @@
+/// \file       Receiver.cpp
+/// \brief      This file is part of OEM7 Heading
+///	\copyright  &copy; https://github.com/Ilushenko Oleksandr Ilushenko 
+///	\author     Oleksandr Ilushenko
+/// \date       2024
 #include "Receiver.h"
 
 #ifdef DEBUGLOG
@@ -31,9 +36,11 @@ void oem7::Receiver::begin()
 {
 	setCommand("UNLOGALL TRUE");
 	// Change baud rate
-	// setCommand("SERIALCONFIG COM1 115200 N 8 1 N ON");
-	// delay(1000);
-	// _serial.begin(115200, SERIAL_8N1, 5, 18);
+	//setCommand("SERIALCONFIG COM1 115200 N 8 1 N ON");
+	//setCommand("SAVECONFIG");
+	//delay(1000);
+	//_serial.begin(115200, SERIAL_8N1, 5, 18);
+
 	setCommand("LOG COM1 RXSTATUSB ONTIME 1");
 	setCommand("LOG COM1 TIMEB ONTIME 1");
 	setCommand("LOG COM1 BESTPOSB ONTIME 1");

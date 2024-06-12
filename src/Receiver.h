@@ -15,10 +15,16 @@
 #define SERIALPORT serialib
 #endif
 
+/// \defgroup oem7rec OEM7 Receiver
+/// \brief OEM7 Receiver communication class
+/// \details A class that provides communication with the GNSS module
+
 namespace oem7 {
     /// \class oem7::Receiver Receiver.h
     /// \brief Provide time, position and heading by GNSS with multiple rovers
+    /// \details Send OEM7 commands to GNSS module via serial
     /// \details Read OEM7 messages from GNSS module via serial
+    /// \ingroup oem7rec
     class Receiver {
         Receiver() = delete;
         Receiver(const Receiver&) = delete;
@@ -40,6 +46,9 @@ namespace oem7 {
         /// \details To be called in the main program loop
         void update();
     public:
+        /// @{
+        /// \name Getters
+
         /// \return Data valid flag
         inline bool isValid() const { return _valid; }
         /// \return Jamming detected
@@ -72,14 +81,14 @@ namespace oem7 {
         inline uint8_t satellitesView() const { return _heading.satellitesTracked; }
         /// \return Number of Satellites in Used
         inline uint8_t satellitesUsed() const { return _heading.satellitesUsed; }
-        /// \brief UTC Time Getter
+        /// \brief UTC-Time Getter
         /// \param year UTC year
         /// \param month UTC month (0-12). If UTC time is unknown, the value for month is 0.
         /// \param day UTC day (0-31). If UTC time is unknown, the value for day is 0.
         /// \param hour UTC hour (0-23)
         /// \param minute UTC minute (0-59)
         /// \param second UTC second (0-59)
-        /// \return Time is Valid
+        /// \return UTC-Time is Valid
         inline bool utcTime(uint32_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second) const
         {
             year = _time.utc_year;
@@ -90,6 +99,7 @@ namespace oem7 {
             second = static_cast<uint8_t>(_time.utc_ms / 1000);
             return _time.clock_status == CLOCK_VALID && _time.utc_status == UTC_VALID;
         }
+        /// @}
     private:
         /// \brief Send command to GNSS module
         /// \details Using abbreviated ASCII command

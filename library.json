@@ -1,0 +1,21 @@
+{
+    "name": "oem7heading",
+    "version": "1.0.0",
+    "description": "A \"oem7heading\" is a library for obtaining heading and position from NovAtel OEM7 GNSS dual-antenna receiver by ESP32, Arduino or PC via serial port",
+    "keywords": [ "OEM7", "heading", "coordinates", "dual-antenna", "arduino", "esp32", "serial" ],
+    "homepage": "https://github.com/Ilushenko/oem7heading",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/Ilushenko/oem7heading.git"
+    },
+    "authors":
+    {
+        "name": "Oleksandr Ilushenko",
+        "email": "ilushenkoal@gmail.com",
+        "maintainer": true
+    },
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "arduino,esp32,win32,posix"
+}

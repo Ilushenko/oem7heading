@@ -12,6 +12,14 @@
 #include <stdint.h>
 #endif
 
+/// \defgroup oem7data OEM7 Protocol
+/// \brief Provide OEM7 Protocol structures and data
+/// \details Classes, structures and enumerators that ensure the operation of NovAtel OEM7 dual-antenna receiver
+/// \anchor strualign
+/// \note All structures must defined with 1-byte alignment
+/// \li Use \c __attribute__((__packed__)) by \b GCC
+/// \li Use \c #pragma \c pack(push,1) and \c #pragma \c pack(pop) directives by \b Win32
+
 #ifdef WIN32
 #define ATTR_PACKED
 #else
@@ -23,23 +31,27 @@
 /// \details Classes, structures and enumerators that ensure the operation of the OEM7 receiver
 /// \details See documentation of protocol message structures: https://docs.novatel.com/OEM7/Content/Logs/Core_Logs.htm
 namespace oem7 {
-    /// Header Sync Bytes and Lenght
+    /// \brief Header Sync Bytes and Lenght
     /// \details https://docs.novatel.com/OEM7/Content/Messages/Binary.htm
+    /// \ingroup oem7data
     enum {
         HEAD_SYNC_1 	        = 0xAA, ///< Sync Byte 1
         HEAD_SYNC_2 	        = 0x44, ///< Sync Byte 2
         HEAD_SYNC_3 	        = 0x12, ///< Sync Byte 3
         HEAD_LENGHT 	        = 0x1C 	///< Lenght
     };
-    /// Message ID
+    /// \brief Message ID
+    /// \details Messages for using in this library
+    /// \ingroup oem7data
     enum {
         MSG_BESTPOS		        = 42,	///< Best position
         MSG_RXSTATUS	        = 93,	///< Receiver status
         MSG_TIME		        = 101,	///< Time data
         MSG_HEADING2            = 1335	///< Heading information with multiple rovers
     };
-    /// Receiver Error
+    /// \brief Receiver Error
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError
+    /// \ingroup oem7data
     enum {
         ERR_DRAM		        = 0x00000001,	///< RAM failure on an OEM7 card may also be indicated by a flashing red LED
         ERR_FIRMWARE	        = 0x00000002,	///< Invalid firmware
@@ -58,22 +70,25 @@ namespace oem7 {
         ERR_SAFEMODE	        = 0x00400000,	///< Safe Mode
         ERR_HARDWARE	        = 0x80000000	///< Component hardware failure
     };
-    /// Clock Model Status
+    /// \brief Clock Model Status
     /// \details https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus
+    /// \ingroup oem7data
     enum {
         CLOCK_VALID			    = 0, ///< The clock model is valid
         CLOCK_CONVERGING        = 1, ///< The clock model is near validity
         CLOCK_ITERATING		    = 2, ///< The clock model is iterating towards validity
         CLOCK_INVALID		    = 3  ///< The clock model is not valid
     };
-    /// UTC Status
+    /// \brief UTC Status
+    /// \ingroup oem7data
     enum {
         UTC_INVALID	            = 0,    ///< Invalid 
         UTC_VALID	            = 1,    ///< Valid
         UTC_WARNING	            = 2     ///< Warning (Indicates that the leap second value is used as a default due to the lack of an almanac)
     };
-    /// Solution Status
+    /// \brief Solution Status
     /// \details https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#SolutionStatus
+    /// \ingroup oem7data
     enum {
         SOL_COMPUTED			= 0,	///< Solution computed
         SOL_INSUFFICIENT_OBS	= 1,	///< Insufficient observations
@@ -91,8 +106,9 @@ namespace oem7 {
         SOL_UNAUTHORIZED		= 20,	///< Position type is unauthorized
         SOL_INVALID_RATE		= 22	///< The selected logging rate is not supported for this solution type.
     };
-    /// Position or Velocity Type
+    /// \brief Position or Velocity Type
     /// \details https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#Position_VelocityType
+    /// \ingroup oem7data
     enum {
         POS_NONE				= 0,  ///< No solution
         POS_FIXEDPOS			= 1,  ///< Position has been fixed by the FIX position command or by position averaging.
@@ -132,6 +148,8 @@ namespace oem7 {
     /// \brief Binary message header structure
     /// \details Using for parsing OEM7 messages
     /// \details https://docs.novatel.com/OEM7/Content/Messages/Binary.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
     struct ATTR_PACKED Head {
         uint16_t msgId;				///< Message ID
         uint8_t msgType;			///< Message Type
@@ -147,9 +165,11 @@ namespace oem7 {
         uint16_t receiverVersion;	///< A value (0 - 65535) representing the receiver software build number
     };
     /// \struct oem7::RxStatus oem7.h
-    /// \brief RXSTATUS Binary structure
+    /// \brief \c RXSTATUS Binary structure
     /// \details Receiver status
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
     struct ATTR_PACKED RxStatus {
         uint32_t error;				///< Receiver error
         uint32_t numStats;			///< Number of status codes (including Receiver Status).
@@ -175,9 +195,11 @@ namespace oem7 {
         uint32_t aux4statClear;		///< Auxiliary 4 status event clear mask
     };
     /// \struct oem7::Time oem7.h
-    /// \brief TIME Binary structure
+    /// \brief \c TIME Binary structure
     /// \details Time data
     /// \details https://docs.novatel.com/OEM7/Content/Logs/TIME.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
     struct ATTR_PACKED Time {
         uint32_t clock_status;		///< Clock model status
         double offset;				///< Receiver clock offset in seconds from GPS system time
@@ -192,9 +214,11 @@ namespace oem7 {
         uint32_t utc_status;		///< UTC status
     };
     /// \struct oem7::BestPos oem7.h
-    /// \brief BESTPOS Binary structure
+    /// \brief \c BESTPOS Binary structure
     /// \details Best position
     /// \details https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
     struct ATTR_PACKED BestPos {
         uint32_t solutionStatus;	///< Solution status
         uint32_t positionType;		///< Position type
@@ -219,9 +243,11 @@ namespace oem7 {
         uint8_t gpsMask;			///< GPS and GLONASS signals used mask
     };
     /// \struct oem7::Heading2 oem7.h
-    /// \brief HEADING2 Binary structure
+    /// \brief \c HEADING2 Binary structure
     /// \details Heading information with multiple rovers
     /// \details https://docs.novatel.com/OEM7/Content/Logs/HEADING2.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
     struct ATTR_PACKED Heading2 {
         uint32_t solutionStatus;	///< Solution status
         uint32_t positionType;		///< Position type

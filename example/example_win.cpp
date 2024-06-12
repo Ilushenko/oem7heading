@@ -1,3 +1,7 @@
+/// \file       example_esp.cpp
+/// \brief      This example how to use a oem7::Receiver class by Win32
+///	\author     Oleksandr Ilushenko
+/// \date       2024
 #include "Receiver.h"
 
 #include <cstdio>

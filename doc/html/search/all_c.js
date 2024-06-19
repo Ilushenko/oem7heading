@@ -2,7 +2,7 @@ var searchData=
 [
   ['pc_20dependency_0',['PC dependency',['../index.html#autotoc_md5',1,'']]],
   ['pinout_1',['Pinout',['../index.html#autotoc_md3',1,'']]],
-  ['pitch_2',['pitch',['../structoem7_1_1_heading2.html#a8a3feef53cfbaf146308d621e927c722',1,'oem7::Heading2::pitch'],['../classoem7_1_1_receiver.html#a588e5bfd9098cbfa1a17b5b15be2ef6b',1,'oem7::Receiver::pitch() const']]],
+  ['pitch_2',['pitch',['../structoem7_1_1_heading2.html#a8a3feef53cfbaf146308d621e927c722',1,'oem7::Heading2::pitch'],['../structoem7_1_1_dual_ant_heading.html#a846f9a85ab48139b861f4dea1d08937a',1,'oem7::DualAntHeading::pitch'],['../classoem7_1_1_receiver.html#a588e5bfd9098cbfa1a17b5b15be2ef6b',1,'oem7::Receiver::pitch() const']]],
   ['pitchdev_3',['pitchDev',['../classoem7_1_1_receiver.html#a79c360bfcdaee7f5cd044ce3c87e5776',1,'oem7::Receiver']]],
   ['portaddress_4',['portAddress',['../structoem7_1_1_head.html#afb2444f2f11cc8f9fb13cd5b92e43805',1,'oem7::Head']]],
   ['pos_5fdoppler_5fvelocity_5',['POS_DOPPLER_VELOCITY',['../group__oem7data.html#ggacae4a45b9f2ed1f03f43fb78624446d2a3aa287f9fd0db9c008a3eaae9b64033c',1,'oem7']]],
@@ -35,7 +35,7 @@ var searchData=
   ['pos_5fwaas_32',['POS_WAAS',['../group__oem7data.html#ggacae4a45b9f2ed1f03f43fb78624446d2a81c0b4f9f2918bcc2d186cbda08dc109',1,'oem7']]],
   ['pos_5fwarning_33',['POS_WARNING',['../group__oem7data.html#ggacae4a45b9f2ed1f03f43fb78624446d2aee4edb1f1820ed929a01075c94da6b4f',1,'oem7']]],
   ['pos_5fwide_5fint_34',['POS_WIDE_INT',['../group__oem7data.html#ggacae4a45b9f2ed1f03f43fb78624446d2a92d7e1223b5a04f48bc6b5d1d53e3f9a',1,'oem7']]],
-  ['positiontype_35',['positionType',['../structoem7_1_1_best_pos.html#a4f35987fb7b1b5b698fac407b18ad521',1,'oem7::BestPos::positionType'],['../structoem7_1_1_heading2.html#a2f683052094542d5ed119bc474a81c2f',1,'oem7::Heading2::positionType']]],
+  ['positiontype_35',['positionType',['../structoem7_1_1_best_pos.html#a4f35987fb7b1b5b698fac407b18ad521',1,'oem7::BestPos::positionType'],['../structoem7_1_1_heading2.html#a2f683052094542d5ed119bc474a81c2f',1,'oem7::Heading2::positionType'],['../structoem7_1_1_dual_ant_heading.html#ade7b4d057831b505850ba62a614f00c6',1,'oem7::DualAntHeading::positionType']]],
   ['protocol_36',['OEM7 Protocol',['../group__oem7data.html',1,'']]],
-  ['ptchstddev_37',['ptchStdDev',['../structoem7_1_1_heading2.html#adc72d5bfa84426abdfbbf0b51f577878',1,'oem7::Heading2']]]
+  ['ptchstddev_37',['ptchStdDev',['../structoem7_1_1_heading2.html#adc72d5bfa84426abdfbbf0b51f577878',1,'oem7::Heading2::ptchStdDev'],['../structoem7_1_1_dual_ant_heading.html#abf3c73534ea2e1257f114ee0a31c561f',1,'oem7::DualAntHeading::ptchStdDev']]]
 ];

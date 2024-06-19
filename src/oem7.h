@@ -47,7 +47,8 @@ namespace oem7 {
         MSG_BESTPOS		        = 42,	///< Best position
         MSG_RXSTATUS	        = 93,	///< Receiver status
         MSG_TIME		        = 101,	///< Time data
-        MSG_HEADING2            = 1335	///< Heading information with multiple rovers
+        MSG_HEADING2            = 1335,	///< Heading information with multiple rovers
+        MSG_DUALANTHEADING      = 2042  ///< Synchronous heading information for dual antenna product
     };
     /// \brief Receiver Error
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError
@@ -259,6 +260,31 @@ namespace oem7 {
         float ptchStdDev;			///< Pitch standard deviation in degrees
         char roverID[4];			///< Rover Receiver ID
         char baseID[4];				///< Base Receiver ID
+        uint8_t satellitesTracked;	///< Number of satellites tracked
+        uint8_t satellitesUsed;		///< Number of satellites used in solution
+        uint8_t satellitesObs;		///< Number of satellites above the elevation mask angle
+        uint8_t satellitesMulti;	///< Number of satellites with multi-frequency signals above the mask angle
+        uint8_t solutionSource;		///< Solution source
+        uint8_t solutionStatusEx;	///< Extended solution status
+        uint8_t gbdMask;			///< Galileo and BeiDou signals used mask
+        uint8_t gpsMask;			///< GPS and GLONASS signals used mask
+    };
+    /// \struct oem7::DualAntHeading oem7.h
+    /// \brief \c HEADING2 Binary structure
+    /// \details Synchronous heading information for dual antenna product
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/DUALANTENNAHEADING.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
+    struct ATTR_PACKED DualAntHeading {
+        uint32_t solutionStatus;	///< Solution status
+        uint32_t positionType;		///< Position type
+        float length;				///< Baseline length in metres
+        float heading;				///< Heading in degrees (0 to 359.999 degrees)
+        float pitch;				///< Pitch (+/-90 degrees)
+        float reserved;				///< Reserved
+        float hdgStdDev;			///< Heading standard deviation in degrees
+        float ptchStdDev;			///< Pitch standard deviation in degrees
+        char stationID[4];          ///< Station ID
         uint8_t satellitesTracked;	///< Number of satellites tracked
         uint8_t satellitesUsed;		///< Number of satellites used in solution
         uint8_t satellitesObs;		///< Number of satellites above the elevation mask angle

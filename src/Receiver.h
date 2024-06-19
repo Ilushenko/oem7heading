@@ -36,6 +36,11 @@ namespace oem7 {
         /// \brief Destructor
         ~Receiver() {}
     public:
+        /// \brief Factory reset
+        /// \details Clears selected data from NVM and reset
+        /// \details After reseting restore baud rate
+        /// \note Erase all user settings!
+        void reset();
         /// \brief Starting working GNSS module
         /// \details Call this method at the beginning of the program
         void begin();
@@ -155,7 +160,7 @@ namespace oem7 {
 	    RxStatus _rxstatus{ 0 };
 	    Time _time{ 0 };
 	    BestPos _bestpos{ 0 };
-	    Heading2 _heading{ 0 };
+	    DualAntHeading _heading{ 0 };
     };
 }
 

@@ -32,19 +32,52 @@ oem7::Receiver::Receiver(SERIALPORT& serial) : _serial(serial)
 {
 }
 
+void oem7::Receiver::reset()
+{
+	// Factory Reset
+	setCommand("FRESET STANDARD");
+	delay(5000);
+	// Default baud rate
+	_serial.begin(9600, SERIAL_8N1, 5, 18);
+	// Restore baud rate
+	setCommand("UNLOGALL TRUE");
+	setCommand("SERIALCONFIG COM1 115200 N 8 1 N ON");
+	delay(1000);
+	_serial.begin(115200, SERIAL_8N1, 5, 18);
+	setCommand("SAVECONFIG");
+}
+
 void oem7::Receiver::begin()
 {
 	setCommand("UNLOGALL TRUE");
-	// Change baud rate
-	//setCommand("SERIALCONFIG COM1 115200 N 8 1 N ON");
-	//setCommand("SAVECONFIG");
-	//delay(1000);
-	//_serial.begin(115200, SERIAL_8N1, 5, 18);
+
+	// setCommand("STATUSCONFIG PRIORITY STATUS 0");
+	// setCommand("STATUSCONFIG PRIORITY AUX1 0x00000008");
+	// setCommand("STATUSCONFIG PRIORITY AUX2 0");
+	
+	// setCommand("STATUSCONFIG SET STATUS 0x00000000");
+	// setCommand("STATUSCONFIG SET AUX1 0");
+	// setCommand("STATUSCONFIG SET AUX2 0");
+	// setCommand("STATUSCONFIG SET AUX4 0xFFFFFFFF");
+	
+	// setCommand("STATUSCONFIG CLEAR STATUS 0x00000000");
+	// setCommand("STATUSCONFIG CLEAR AUX1 0");
+	// setCommand("STATUSCONFIG CLEAR AUX2 0");
+	// setCommand("STATUSCONFIG CLEAR AUX4 0");
+
+	setCommand("ANTENNAPOWER ON");
+	setCommand("RFINPUTGAIN L1 AUTO");
+	setCommand("RFINPUTGAIN L2 AUTO");
+	//setCommand("RFINPUTGAIN L5 AUTO");
+	setCommand("ASSIGNALL ALL AUTO");
+	setCommand("DUALANTENNAALIGN ENABLE 8 8");
+
+	setCommand("SAVECONFIG");
 
 	setCommand("LOG COM1 RXSTATUSB ONTIME 1");
 	setCommand("LOG COM1 TIMEB ONTIME 1");
-	setCommand("LOG COM1 BESTPOSB ONTIME 1");
-	setCommand("LOG COM1 HEADING2B ONNEW");
+	setCommand("LOG COM1 BESTPOSB ONTIME 0.25");
+	setCommand("LOG COM1 DUALANTENNAHEADINGB ONTIME 0.25");
 }
 
 void oem7::Receiver::stop()
@@ -69,7 +102,7 @@ void oem7::Receiver::update()
 		case MSG_BESTPOS:
 			isBestPos = true;
 			break;
-		case MSG_HEADING2:
+		case MSG_DUALANTHEADING:
 			isHeading2 = true;
 			break;
 		}
@@ -111,7 +144,7 @@ void oem7::Receiver::update()
 		if (_bestpos.solutionStatus != SOL_COMPUTED) isBestPos = false;
 	}
 	if (isHeading2) {
-		xDebug("#HEADING2[Status: %u, PosType: %u, Lenght: %.02f, Heading: %.02f, HeadingDev: %.02f Pitch: %.02f PitchDev: %.02f, SatView: %u, SatUsed: %u]\n",
+		xDebug("#HEADING[Status: %u, PosType: %u, Lenght: %.02f, Heading: %.02f, HeadingDev: %.02f Pitch: %.02f PitchDev: %.02f, SatView: %u, SatUsed: %u]\n",
 			_heading.solutionStatus, _heading.positionType,
 			_heading.length, _heading.heading, _heading.hdgStdDev, _heading.pitch, _heading.ptchStdDev,
 			_heading.satellitesTracked, _heading.satellitesUsed
@@ -195,9 +228,10 @@ uint16_t oem7::Receiver::getData()
 		return 0;
 	}
 	memcpy(&head, &buffer[4], sizeof(Head));
-	//xDebug("Msg ID: %u Size: %u\n", head.msgId, static_cast<unsigned int>(head.msgLenght));
+	const size_t size = static_cast<size_t>(head.msgLenght);
+	//xDebug("Msg ID: %u Size: %u\n", head.msgId, size);
 	// Read Message
-	if (_serial.readBytes(&buffer[HEAD_LENGHT], static_cast<unsigned int>(head.msgLenght)) != head.msgLenght) {
+	if (_serial.readBytes(&buffer[HEAD_LENGHT], size) != size) {
 		xLog("Message Read Error\n");
 		return 0;
 	}
@@ -209,7 +243,7 @@ uint16_t oem7::Receiver::getData()
 	uint32_t crc = 0;
 	memcpy(&crc, &crcbuf[0], sizeof(crc));
 	// Check CRC
-	const uint32_t chk = crc32block(&buffer[0], static_cast<size_t>(head.msgLenght) + HEAD_LENGHT);
+	const uint32_t chk = crc32block(&buffer[0], size + HEAD_LENGHT);
 	if (crc != chk) {
 		xLog("CRC Error! Contain: %u Computed: %u\n", crc, chk);
 		return 0;
@@ -217,33 +251,32 @@ uint16_t oem7::Receiver::getData()
 	// to Data
 	switch (head.msgId) {
 	case MSG_RXSTATUS:
-		if (head.msgLenght != sizeof(oem7::RxStatus)) {
+		if (size != sizeof(oem7::RxStatus)) {
 			xLog("OEM7RxStatus Wrong Size\n");
 			return 0;
 		}
-		memcpy(&_rxstatus, &buffer[HEAD_LENGHT], sizeof(oem7::RxStatus));
+		memcpy(&_rxstatus, &buffer[HEAD_LENGHT], size);
 		break;
 	case MSG_TIME:
-		if (head.msgLenght != sizeof(oem7::Time)) {
+		if (size != sizeof(oem7::Time)) {
 			xLog("OEM7Time Wrong Size\n");
 			return 0;
 		}
-		memcpy(&_time, &buffer[HEAD_LENGHT], sizeof(oem7::Time));
+		memcpy(&_time, &buffer[HEAD_LENGHT], size);
 		break;
 	case MSG_BESTPOS:
-		if (head.msgLenght != sizeof(oem7::BestPos)) {
+		if (size != sizeof(oem7::BestPos)) {
 			xLog("OEM7BestPos Wrong Size\n");
 			return 0;
 		}
-		memcpy(&_bestpos, &buffer[HEAD_LENGHT], sizeof(oem7::BestPos));
+		memcpy(&_bestpos, &buffer[HEAD_LENGHT], size);
 		break;
-	case MSG_HEADING2:
-		if (head.msgLenght != sizeof(oem7::Heading2)) {
-			xLog("OEM7Heading2 Wrong Size\n");
+	case MSG_DUALANTHEADING:
+		if (size != sizeof(oem7::DualAntHeading)) {
+			xLog("OEM7DualAntHeading Wrong Size\n");
 			return 0;
 		}
-		memcpy(&_heading, &buffer[HEAD_LENGHT], sizeof(oem7::Heading2));
-		break;
+		memcpy(&_heading, &buffer[HEAD_LENGHT], size);
 	}
 	return head.msgId;
 }
@@ -253,14 +286,14 @@ bool oem7::Receiver::checkDevice()
 	if (_rxstatus.error != 0) {
 		if (_rxstatus.error & ERR_DRAM) 		xLog("RX ERROR! RAM failure on an OEM7 card may also be indicated by a flashing red LED");
 		if (_rxstatus.error & ERR_FIRMWARE) 	xLog("RX ERROR! Invalid firmware");
-		if (_rxstatus.error & ERR_ROM) 		xLog("RX ERROR! ROM status");
-		if (_rxstatus.error & ERR_ESN) 		xLog("RX ERROR! Electronic Serial Number (ESN) access status");
+		if (_rxstatus.error & ERR_ROM) 			xLog("RX ERROR! ROM status");
+		if (_rxstatus.error & ERR_ESN) 			xLog("RX ERROR! Electronic Serial Number (ESN) access status");
 		if (_rxstatus.error & ERR_AUTH) 		xLog("RX ERROR! Authorization code status");
-		if (_rxstatus.error & ERR_VOLTAGE) 	xLog("RX ERROR! Supply voltage status");
+		if (_rxstatus.error & ERR_VOLTAGE) 		xLog("RX ERROR! Supply voltage status");
 		if (_rxstatus.error & ERR_TEMPERATURE)	xLog("RX ERROR! Temperature status (as compared against acceptable limits)");
 		if (_rxstatus.error & ERR_MINOS) 		xLog("RX ERROR! MINOS status");
 		if (_rxstatus.error & ERR_PLLRF) 		xLog("RX ERROR! PLL RF status. Error with an RF PLL. See AUX2 status bits");
-		if (_rxstatus.error & ERR_NVM) 		xLog("RX ERROR! NVM status");
+		if (_rxstatus.error & ERR_NVM) 			xLog("RX ERROR! NVM status");
 		if (_rxstatus.error & ERR_SOFT_LIMIT) 	xLog("RX ERROR! Software resource limit exceeded");
 		if (_rxstatus.error & ERR_MODEL) 		xLog("RX ERROR! Model invalid for this receiver");
 		if (_rxstatus.error & ERR_REMOTE) 		xLog("RX ERROR! Remote loading has begun");

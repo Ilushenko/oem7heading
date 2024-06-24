@@ -10,5 +10,6 @@ var searchData=
   ['heading_20library_7',['OEM7 Heading Library',['../index.html',1,'']]],
   ['heading2_8',['Heading2',['../structoem7_1_1_heading2.html',1,'oem7']]],
   ['headingdev_9',['headingDev',['../classoem7_1_1_receiver.html#a2cdffe8e7ab55233b2fe0e546b7ab143',1,'oem7::Receiver']]],
-  ['headingpositiontype_10',['headingPositionType',['../classoem7_1_1_receiver.html#ae8c4a1ef95c0cb7a602ed9e49d0ac4d0',1,'oem7::Receiver']]]
+  ['headingpositiontype_10',['headingPositionType',['../classoem7_1_1_receiver.html#ae8c4a1ef95c0cb7a602ed9e49d0ac4d0',1,'oem7::Receiver']]],
+  ['hw_11',['hw',['../structoem7_1_1_version.html#a749d1e077c48f31c28714a1b7da24a61',1,'oem7::Version']]]
 ];

@@ -10,5 +10,6 @@ var searchData=
   ['solutionsource_7',['solutionSource',['../structoem7_1_1_heading2.html#ac20488b7ab5c8a1350d22596f75fd88f',1,'oem7::Heading2::solutionSource'],['../structoem7_1_1_dual_ant_heading.html#a74a6c39c15c72696b8d3814fb97fafbd',1,'oem7::DualAntHeading::solutionSource']]],
   ['solutionstatus_8',['solutionStatus',['../structoem7_1_1_best_pos.html#a9db140421bfd498dc50debf756d4b74b',1,'oem7::BestPos::solutionStatus'],['../structoem7_1_1_heading2.html#aa22f4d273c292e6ddeedb1bb6f59662a',1,'oem7::Heading2::solutionStatus'],['../structoem7_1_1_dual_ant_heading.html#ae6e997529fcab090a1f5020fa58b9c8c',1,'oem7::DualAntHeading::solutionStatus']]],
   ['solutionstatusex_9',['solutionStatusEx',['../structoem7_1_1_best_pos.html#aa458b4babed16fec70544e7328aec334',1,'oem7::BestPos::solutionStatusEx'],['../structoem7_1_1_heading2.html#a670cc38b85dde1c93c6a6d2001b9ebe5',1,'oem7::Heading2::solutionStatusEx'],['../structoem7_1_1_dual_ant_heading.html#acdeb84c5d536cbd469beb6bb7010f59f',1,'oem7::DualAntHeading::solutionStatusEx']]],
-  ['stationid_10',['stationID',['../structoem7_1_1_dual_ant_heading.html#a379b7d695250aee8f78197e058f707b8',1,'oem7::DualAntHeading']]]
+  ['stationid_10',['stationID',['../structoem7_1_1_dual_ant_heading.html#a379b7d695250aee8f78197e058f707b8',1,'oem7::DualAntHeading']]],
+  ['sw_11',['sw',['../structoem7_1_1_version.html#a8a5f3fb5eb60d7aded8cfcfb32a0aa9c',1,'oem7::Version']]]
 ];

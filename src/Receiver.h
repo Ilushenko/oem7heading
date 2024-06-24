@@ -39,6 +39,7 @@ namespace oem7 {
         /// \brief Factory reset
         /// \details Clears selected data from NVM and reset
         /// \details After reseting restore baud rate
+        /// \details Arduino platform only
         /// \note Erase all user settings!
         void reset();
         /// \brief Starting working GNSS module
@@ -54,6 +55,12 @@ namespace oem7 {
         /// @{
         /// \name Getters
 
+        /// \return Number of version components (cards, and so on)
+        inline uint32_t versionComp() const { return _versionIdx; }
+        /// \brief Version getter
+        /// \param idx Index of version component
+        /// \return Version structure reference
+        inline const Version& version(const uint32_t idx) const { return _version[idx > _versionIdx ? 0 : idx]; }
         /// \return Data valid flag
         inline bool isValid() const { return _valid; }
         /// \return Jamming detected
@@ -116,6 +123,10 @@ namespace oem7 {
         /// \details Check data CRC
         /// \details See: https://docs.novatel.com/OEM7/Content/Messages/Binary.htm
         uint16_t getData();
+        /// \brief Wait for serial available
+        /// \param timeout Wait timeout in ms
+        /// \return \c true if serial available or \c false if timeout
+        bool waitAvailable(const unsigned long timeout) const;
     private:
         /// \return Receiver errors or warnings detected
         bool checkDevice();
@@ -157,6 +168,8 @@ namespace oem7 {
         bool _valid{ false };
         bool _jamming{ false };
         bool _spoofing{ false };
+        uint32_t _versionIdx{ 0 };
+        Version _version[8]{ 0 };
 	    RxStatus _rxstatus{ 0 };
 	    Time _time{ 0 };
 	    BestPos _bestpos{ 0 };

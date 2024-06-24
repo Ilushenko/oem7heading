@@ -44,11 +44,40 @@ namespace oem7 {
     /// \details Messages for using in this library
     /// \ingroup oem7data
     enum {
+        MSG_VERSION             = 37,   ///< Version information
         MSG_BESTPOS		        = 42,	///< Best position
         MSG_RXSTATUS	        = 93,	///< Receiver status
         MSG_TIME		        = 101,	///< Time data
         MSG_HEADING2            = 1335,	///< Heading information with multiple rovers
         MSG_DUALANTHEADING      = 2042  ///< Synchronous heading information for dual antenna product
+    };
+    /// \brief Version Component Types
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#ComponentTypes
+    /// \ingroup oem7data
+    enum {
+        VCT_UNKNOWN         = 0,            ///< Unknown component
+        VCT_GPSCARD         = 1,            ///< OEM7 family receiver. In an enclosure product this is the receiver card in the enclosure
+        VCT_CONTROLLER      = 2,            ///< Reserved
+        VCT_ENCLOSURE       = 3,            ///< OEM card enclosure
+        // 4-6 Reserved
+        VCT_IMUCARD         = 7,            ///< IMU integrated in the enclosure
+        VCT_USERINFO        = 8,            ///< Application specific information
+        // 12-14 Reserved
+        VCT_WIFI            = 15,           ///< Wi-Fi radio firmware
+        // 16-17 Reserved
+        VCT_RADIO           = 18,           ///< UHF radio component
+        VCT_WWW_CONTENT     = 19,           ///< Web Server content
+        VCT_REGULATORY      = 20,           ///< Regulatory configuration
+        VCT_OEM7FPGA        = 21,           ///< OEM7 FPGA version
+        VCT_APPLICATION     = 22,           ///< Embedded application
+        VCT_PACKAGE         = 23,           ///< Package
+        // 24 Reserved
+        VCT_DEFAULT_CONFIG  = 25,           ///< Default configuration data
+        VCT_WHEELSENSOR     = 26,           ///< Wheel sensor in the enclosure
+        VCT_EMBEDDED_AUTH   = 27,           ///< Embedded Auth Code data
+        VCT_DB_HEIGHTMODEL  = 0x3A7A0000,   ///< Height/track model data
+        VCT_DB_WWWISO       = 0x3A7A0008,   ///< Web UI ISO Image
+        VCT_DB_LUA_SCRIPTS  = 0x3A7A000A    ///< Lua Script ISO Image
     };
     /// \brief Receiver Error
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError
@@ -164,6 +193,22 @@ namespace oem7 {
         uint32_t receiverStatus;	///< 32-bits representing the status of various hardware and software components of the receiver
         uint16_t reserved;			///< Reserved for internal use
         uint16_t receiverVersion;	///< A value (0 - 65535) representing the receiver software build number
+    };
+    /// \struct oem7::Version oem7.h
+    /// \brief \c VERSION Binary structure
+    /// \details Version information
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
+    struct ATTR_PACKED Version {
+        uint32_t type;      ///< Component type
+        char model[16];     ///< OEM7 firmware model number
+        char psn[16];       ///< Product serial number
+        char hw[16];        ///< Hardware version in the format: \c P-R. \c P = platform, \c R = revision
+        char sw[16];        ///< Firmware version, see https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#VERSIONLogFieldFormats
+        char boot[16];      ///< Boot code version, see https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#VERSIONLogFieldFormats
+        char compdate[12];  ///< Firmware compile date in the format: \c YYYY/Mmm/DD
+        char comptime[12];  ///< Firmware compile time in the format: \c HH:MM:SS
     };
     /// \struct oem7::RxStatus oem7.h
     /// \brief \c RXSTATUS Binary structure

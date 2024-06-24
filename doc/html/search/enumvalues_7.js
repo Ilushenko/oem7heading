@@ -18,8 +18,5 @@ var searchData=
   ['vct_5fuserinfo_15',['VCT_USERINFO',['../group__oem7data.html#gga8d5df4d74f9d3360b692a0f7ab9bf24fa76e8586f968a2c4f23897c296d2d4cd0',1,'oem7']]],
   ['vct_5fwheelsensor_16',['VCT_WHEELSENSOR',['../group__oem7data.html#gga8d5df4d74f9d3360b692a0f7ab9bf24faa8cf00dda9db59afc173718990065719',1,'oem7']]],
   ['vct_5fwifi_17',['VCT_WIFI',['../group__oem7data.html#gga8d5df4d74f9d3360b692a0f7ab9bf24fad0858760ab7e097966759099983d926b',1,'oem7']]],
-  ['vct_5fwww_5fcontent_18',['VCT_WWW_CONTENT',['../group__oem7data.html#gga8d5df4d74f9d3360b692a0f7ab9bf24fa5188027e46f80e8d36992b983bb43b63',1,'oem7']]],
-  ['version_19',['Version',['../structoem7_1_1_version.html',1,'oem7']]],
-  ['version_20',['version',['../classoem7_1_1_receiver.html#ae67a4c64c019ed010972500511752500',1,'oem7::Receiver']]],
-  ['versioncomp_21',['versionComp',['../classoem7_1_1_receiver.html#ad2ea5706549d3a6f3fdb01127e25a550',1,'oem7::Receiver']]]
+  ['vct_5fwww_5fcontent_18',['VCT_WWW_CONTENT',['../group__oem7data.html#gga8d5df4d74f9d3360b692a0f7ab9bf24fa5188027e46f80e8d36992b983bb43b63',1,'oem7']]]
 ];

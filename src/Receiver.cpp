@@ -11,6 +11,7 @@
 #  define xDebug(fmt, ...) Serial.printf("[%s %s:%i] ", __FUNCTION__, __FILENAME__, __LINE__); Serial.printf(fmt, ##__VA_ARGS__)
 # else
 # include <cstdio>
+# include <chrono>
 #  ifdef _WIN32
 #   define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 #  else
@@ -35,6 +36,7 @@ oem7::Receiver::Receiver(SERIALPORT& serial) : _serial(serial)
 void oem7::Receiver::reset()
 {
 	// Factory Reset
+#if defined(ESP8266) || defined(ESP32)
 	setCommand("FRESET STANDARD");
 	delay(5000);
 	// Default baud rate
@@ -45,6 +47,7 @@ void oem7::Receiver::reset()
 	delay(1000);
 	_serial.begin(115200, SERIAL_8N1, 5, 18);
 	setCommand("SAVECONFIG");
+#endif
 }
 
 void oem7::Receiver::begin()
@@ -65,15 +68,27 @@ void oem7::Receiver::begin()
 	// setCommand("STATUSCONFIG CLEAR AUX2 0");
 	// setCommand("STATUSCONFIG CLEAR AUX4 0");
 
+	// ITDETECTCONFIG
+
+	// RTKANTENNA
+	// BestPos::solutionStatusEx
+	// DualAntHeading::solutionStatusEx
+
 	setCommand("ANTENNAPOWER ON");
 	setCommand("RFINPUTGAIN L1 AUTO");
 	setCommand("RFINPUTGAIN L2 AUTO");
 	//setCommand("RFINPUTGAIN L5 AUTO");
 	setCommand("ASSIGNALL ALL AUTO");
-	setCommand("DUALANTENNAALIGN ENABLE 8 8");
+	setCommand("DUALANTENNAALIGN ENABLE 5 5");
 
 	setCommand("SAVECONFIG");
 
+	setCommand("LOG COM1 VERSIONB ONCE");
+	waitAvailable(100);
+	if (getData() != MSG_VERSION) {
+		_versionIdx = 0;
+		xDebug("#VERSION Read Error!\n");
+	}
 	setCommand("LOG COM1 RXSTATUSB ONTIME 1");
 	setCommand("LOG COM1 TIMEB ONTIME 1");
 	setCommand("LOG COM1 BESTPOSB ONTIME 0.25");
@@ -173,15 +188,12 @@ void oem7::Receiver::setCommand(const char *cmd)
 #endif
 	xLog(">%s\n", cmd);
 	// Read Abbreviated ASCII Response. Example: \r\n<OK\r\n[COM1]
-	unsigned long ms = millis();
-	while (_serial.available() <= 0) { 
-		if (millis() - ms > 2000) break;
-		yield();		
-	}
+	if (!waitAvailable(100)) return;
 	uint8_t data = 0;
 	while (_serial.available() > 0) {
 		if (_serial.readBytes(&data, 1) != 1) continue;
 		if (data != 0x0D && data != 0x0A) xLog("%c", data);
+		if (data == ']') break;
 	}
 	xLog("\n");
 }
@@ -190,7 +202,7 @@ uint16_t oem7::Receiver::getData()
 {
 	static Head head = { 0 };
 	static uint8_t crcbuf[4] = { 0 };
-	static uint8_t buffer[256] = { 0 };
+	static uint8_t buffer[1024] = { 0 };
 	// 0xAA Sync Byte
 	if (_serial.readBytes(&buffer[0], 1) != 1) {
 		xLog("Error read byte\n");
@@ -250,6 +262,19 @@ uint16_t oem7::Receiver::getData()
 	}
 	// to Data
 	switch (head.msgId) {
+	case MSG_VERSION:
+		if (size < sizeof(uint32_t)) {
+			xLog("OEM7Version Wrong Size\n");
+			return 0;
+		}
+		memcpy(&_versionIdx, &buffer[HEAD_LENGHT], sizeof(uint32_t));
+		//xDebug("OEM7Version Number: %u\n", _versionIdx);
+		if (size - sizeof(uint32_t) != _versionIdx * sizeof(Version)) {
+			xLog("OEM7Version Wrong Size\n");
+			return 0;
+		}
+		memcpy(&_version[0], &buffer[HEAD_LENGHT + sizeof(uint32_t)], size - sizeof(uint32_t));
+		break;
 	case MSG_RXSTATUS:
 		if (size != sizeof(oem7::RxStatus)) {
 			xLog("OEM7RxStatus Wrong Size\n");
@@ -279,6 +304,30 @@ uint16_t oem7::Receiver::getData()
 		memcpy(&_heading, &buffer[HEAD_LENGHT], size);
 	}
 	return head.msgId;
+}
+
+bool oem7::Receiver::waitAvailable(const unsigned long timeout) const
+{
+#if !defined(ESP8266) && !defined(ESP32)
+	auto millis = []() {
+		auto duration = std::chrono::system_clock::now().time_since_epoch();
+		return static_cast<unsigned long>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count());
+	};
+	auto yield = [&]() {
+# ifdef WIN32
+		::Sleep(0);
+# else
+		usleep(0);
+# endif
+	};
+#endif
+	unsigned long ms = millis();
+	if (static_cast<unsigned long>(ms + timeout) == 0) ms = 0;
+	while (_serial.available() == 0) {
+		if (millis() - ms > timeout) return false;
+		yield();
+	}
+	return true;
 }
 
 bool oem7::Receiver::checkDevice()

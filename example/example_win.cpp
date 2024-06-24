@@ -41,6 +41,21 @@ int main(int argc, char** argv)
 	// Setup
 	oem7::Receiver gnss(serial);
 	gnss.begin();
+	// Print Version
+	const uint32_t vx = gnss.versionComp();
+	printf("#VERSION [ Number: %u\n", vx);
+	for (uint32_t i = 0; i < vx; ++i) {
+		printf(" Type: %u, Model: %s, PSN: %s, HW: %s, SW: %s, Boot: %s, Date: %s, Time: %s\n",
+			gnss.version(i).type,
+			&gnss.version(i).model[0],
+			&gnss.version(i).psn[0],
+			&gnss.version(i).hw[0],
+			&gnss.version(i).sw[0],
+			&gnss.version(i).boot[0],
+			&gnss.version(i).compdate[0],
+			&gnss.version(i).comptime[0]
+		);
+	}
 	// Loop
 	uint32_t year;
 	uint8_t month, day, hour, minute, second;

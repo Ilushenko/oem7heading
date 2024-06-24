@@ -112,6 +112,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa14fceba8c830b78a2f832f9d8fb2031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data of GNSS module.  <br /></td></tr>
 <tr class="separator:aa14fceba8c830b78a2f832f9d8fb2031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Getters</div></td></tr>
+<tr class="memitem:ad2ea5706549d3a6f3fdb01127e25a550" id="r_ad2ea5706549d3a6f3fdb01127e25a550"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2ea5706549d3a6f3fdb01127e25a550">versionComp</a> () const</td></tr>
+<tr class="separator:ad2ea5706549d3a6f3fdb01127e25a550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae67a4c64c019ed010972500511752500" id="r_ae67a4c64c019ed010972500511752500"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structoem7_1_1_version.html">Version</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae67a4c64c019ed010972500511752500">version</a> (const uint32_t idx) const</td></tr>
+<tr class="memdesc:ae67a4c64c019ed010972500511752500"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structoem7_1_1_version.html" title="VERSION Binary structure">Version</a> getter.  <br /></td></tr>
+<tr class="separator:ae67a4c64c019ed010972500511752500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b78af29c69f3c9ad0fdd2672b324ff" id="r_a93b78af29c69f3c9ad0fdd2672b324ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93b78af29c69f3c9ad0fdd2672b324ff">isValid</a> () const</td></tr>
 <tr class="separator:a93b78af29c69f3c9ad0fdd2672b324ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c34fdb3357b81dcbeb0255fd0b0007f" id="r_a4c34fdb3357b81dcbeb0255fd0b0007f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c34fdb3357b81dcbeb0255fd0b0007f">isJamming</a> () const</td></tr>
@@ -156,6 +161,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:adf13b8db42dd35a899700295c3cd9b58" id="r_adf13b8db42dd35a899700295c3cd9b58"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf13b8db42dd35a899700295c3cd9b58">getData</a> ()</td></tr>
 <tr class="memdesc:adf13b8db42dd35a899700295c3cd9b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read GNSS data.  <br /></td></tr>
 <tr class="separator:adf13b8db42dd35a899700295c3cd9b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae605c402aef2aefd1f44a5de41a4a575" id="r_ae605c402aef2aefd1f44a5de41a4a575"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae605c402aef2aefd1f44a5de41a4a575">waitAvailable</a> (const unsigned long timeout) const</td></tr>
+<tr class="memdesc:ae605c402aef2aefd1f44a5de41a4a575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for serial available.  <br /></td></tr>
+<tr class="separator:ae605c402aef2aefd1f44a5de41a4a575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae814c2e6a6d84f1a5ad71d42c756acd2" id="r_ae814c2e6a6d84f1a5ad71d42c756acd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae814c2e6a6d84f1a5ad71d42c756acd2">checkDevice</a> ()</td></tr>
 <tr class="separator:ae814c2e6a6d84f1a5ad71d42c756acd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc9986441222558c0bda2de55cd54853" id="r_abc9986441222558c0bda2de55cd54853"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc9986441222558c0bda2de55cd54853">checkAntenna</a> ()</td></tr>
@@ -229,7 +237,8 @@ Static Private Member Functions</h2></td></tr>
 
 <p>Factory reset. </p>
 <p>Clears selected data from NVM and reset</p>
-<p>After reseting restore baud rate </p><dl class="section note"><dt>Note</dt><dd>Erase all user settings! </dd></dl>
+<p>After reseting restore baud rate</p>
+<p>Arduino platform only </p><dl class="section note"><dt>Note</dt><dd>Erase all user settings! </dd></dl>
 
 </div>
 </div>
@@ -290,6 +299,66 @@ Static Private Member Functions</h2></td></tr>
 
 <p>Update data of GNSS module. </p>
 <p>To be called in the main program loop </p>
+
+</div>
+</div>
+<a id="ad2ea5706549d3a6f3fdb01127e25a550" name="ad2ea5706549d3a6f3fdb01127e25a550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ea5706549d3a6f3fdb01127e25a550">&#9670;&#160;</a></span>versionComp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t oem7::Receiver::versionComp </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Number of version components (cards, and so on) </dd></dl>
+
+</div>
+</div>
+<a id="ae67a4c64c019ed010972500511752500" name="ae67a4c64c019ed010972500511752500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae67a4c64c019ed010972500511752500">&#9670;&#160;</a></span>version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structoem7_1_1_version.html">Version</a> &amp; oem7::Receiver::version </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t</td>          <td class="paramname"><span class="paramname"><em>idx</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structoem7_1_1_version.html" title="VERSION Binary structure">Version</a> getter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Index of version component </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structoem7_1_1_version.html" title="VERSION Binary structure">Version</a> structure reference </dd></dl>
 
 </div>
 </div>
@@ -833,6 +902,40 @@ Static Private Member Functions</h2></td></tr>
 <p>Read and parse data from serial</p>
 <p>Check data CRC</p>
 <p>See: <a href="https://docs.novatel.com/OEM7/Content/Messages/Binary.htm">https://docs.novatel.com/OEM7/Content/Messages/Binary.htm</a> </p>
+
+</div>
+</div>
+<a id="ae605c402aef2aefd1f44a5de41a4a575" name="ae605c402aef2aefd1f44a5de41a4a575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae605c402aef2aefd1f44a5de41a4a575">&#9670;&#160;</a></span>waitAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oem7::Receiver::waitAvailable </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait for serial available. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>Wait timeout in ms </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if serial available or <code>false</code> if timeout </dd></dl>
 
 </div>
 </div>

@@ -87,6 +87,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoem7_1_1_head.html">oem7::Head</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary message header structure.  <a href="structoem7_1_1_head.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoem7_1_1_version.html">oem7::Version</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>VERSION</code> Binary structure  <a href="structoem7_1_1_version.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoem7_1_1_rx_status.html">oem7::RxStatus</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>RXSTATUS</code> Binary structure  <a href="structoem7_1_1_rx_status.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,118 +116,147 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga9b64697efe82e543e79834663d3ab152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header Sync Bytes and Lenght.  <a href="#ga9b64697efe82e543e79834663d3ab152">More...</a><br /></td></tr>
 <tr class="separator:ga9b64697efe82e543e79834663d3ab152"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga34059b445af5e5777ae449aaf95a9463" id="r_ga34059b445af5e5777ae449aaf95a9463"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82">oem7::MSG_BESTPOS</a> = 42
+&#160;&#160;<a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a25aba199656467d31b2698e6c257e652">oem7::MSG_VERSION</a> = 37
+, <a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82">oem7::MSG_BESTPOS</a> = 42
 , <a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a707eb109a8786d33584048cabf88bc20">oem7::MSG_RXSTATUS</a> = 93
 , <a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a04edd4fd79d0559ee9dc603a82acd2ae">oem7::MSG_TIME</a> = 101
-, <a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a00e6999dcd130a30a7d8e59128ff7b7c">oem7::MSG_HEADING2</a> = 1335
 , <br />
-&#160;&#160;<a class="el" href="#gga34059b445af5e5777ae449aaf95a9463ac6ce60a1ae85dfa4a5b94477ff697c1b">oem7::MSG_DUALANTHEADING</a> = 2042
+&#160;&#160;<a class="el" href="#gga34059b445af5e5777ae449aaf95a9463a00e6999dcd130a30a7d8e59128ff7b7c">oem7::MSG_HEADING2</a> = 1335
+, <a class="el" href="#gga34059b445af5e5777ae449aaf95a9463ac6ce60a1ae85dfa4a5b94477ff697c1b">oem7::MSG_DUALANTHEADING</a> = 2042
 <br />
  }</td></tr>
 <tr class="memdesc:ga34059b445af5e5777ae449aaf95a9463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message ID.  <a href="#ga34059b445af5e5777ae449aaf95a9463">More...</a><br /></td></tr>
 <tr class="separator:ga34059b445af5e5777ae449aaf95a9463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8d5df4d74f9d3360b692a0f7ab9bf24f" id="r_ga8d5df4d74f9d3360b692a0f7ab9bf24f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24faf3c37818fa8ad2e203a94507c22343a4">oem7::ERR_DRAM</a> = 0x00000001
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa7234224ac5e46ac725b7bcef5ca4e280">oem7::ERR_FIRMWARE</a> = 0x00000002
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa6b0477f43fa509101c754410e79e8a38">oem7::ERR_ROM</a> = 0x00000004
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa6448198da67a04bebaf95e1a768df82e">oem7::ERR_ESN</a> = 0x00000010
+&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa06e1e6ea345633df5cda34e9090cb34d">oem7::VCT_UNKNOWN</a> = 0
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fac40d07ca8688e3ea3f0c0ea8efb7d4a3">oem7::VCT_GPSCARD</a> = 1
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa6635dd9bafab927f2f39b0c0ee245122">oem7::VCT_CONTROLLER</a> = 2
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa0ee170ea9dee2e39ce1e087501c3e500">oem7::VCT_ENCLOSURE</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fac3ba6b471cbe0dec50ee5d93a3445c99">oem7::ERR_AUTH</a> = 0x00000020
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa8086c1990b85c776f1cd2b4e17254e80">oem7::ERR_VOLTAGE</a> = 0x00000080
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa27befa5df5924d18a01cdd2dbf568c58">oem7::ERR_TEMPERATURE</a> = 0x00000200
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa25d9434dbf9a9271261ed87f771070b6">oem7::ERR_MINOS</a> = 0x00000400
+&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa46f2ada7c431aaa5110c97acff315135">oem7::VCT_IMUCARD</a> = 7
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa76e8586f968a2c4f23897c296d2d4cd0">oem7::VCT_USERINFO</a> = 8
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fad0858760ab7e097966759099983d926b">oem7::VCT_WIFI</a> = 15
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa681de544c1c0498659dd299deb1d2492">oem7::VCT_RADIO</a> = 18
 , <br />
-&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fabc36970af8a6d779e13dd7808bfde9ed">oem7::ERR_PLLRF</a> = 0x00000800
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa971df5f5391eef7d1cab52de1d17a8c4">oem7::ERR_NVM</a> = 0x00008000
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa20b0bdaa7d2da1fe1ac59b1fbbce744d">oem7::ERR_SOFT_LIMIT</a> = 0x00010000
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa40a1adcab718494cdbf82e5206ac6eeb">oem7::ERR_MODEL</a> = 0x00020000
+&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa5188027e46f80e8d36992b983bb43b63">oem7::VCT_WWW_CONTENT</a> = 19
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa00c5014d65685d33610495bb8ade0928">oem7::VCT_REGULATORY</a> = 20
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fac7431f464e8899c88bc225ca07214212">oem7::VCT_OEM7FPGA</a> = 21
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa32694c2bbd9d4925a3e0ac0ee5d437ad">oem7::VCT_APPLICATION</a> = 22
 , <br />
-&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa646fb5819b4bcf8d5eed60e8804ea962">oem7::ERR_REMOTE</a> = 0x00100000
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa8094ed6bb52da54f0f6a43f401606f86">oem7::ERR_EXPORT</a> = 0x00200000
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa7acc3099510822b627a55fd5628da08a">oem7::ERR_SAFEMODE</a> = 0x00400000
-, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa30f2049a084ed1aa1ea84213fa85bba5">oem7::ERR_HARDWARE</a> = 0x80000000
+&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24faab3e01b50d71a8b225f7c0a20a0b181f">oem7::VCT_PACKAGE</a> = 23
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa26fa0fd3ba46638b4c1926e07b4f35e8">oem7::VCT_DEFAULT_CONFIG</a> = 25
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24faa8cf00dda9db59afc173718990065719">oem7::VCT_WHEELSENSOR</a> = 26
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fac12e98cbe31d48617abab0b6e209f9fd">oem7::VCT_EMBEDDED_AUTH</a> = 27
+, <br />
+&#160;&#160;<a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa0eb3296ade7eb4e662fc416af4b1a454">oem7::VCT_DB_HEIGHTMODEL</a> = 0x3A7A0000
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa69bad810804f16141be4e2854c5bb841">oem7::VCT_DB_WWWISO</a> = 0x3A7A0008
+, <a class="el" href="#gga8d5df4d74f9d3360b692a0f7ab9bf24fa6427b5bcf1c71758dc08f684ad074e66">oem7::VCT_DB_LUA_SCRIPTS</a> = 0x3A7A000A
 <br />
  }</td></tr>
-<tr class="memdesc:ga8d5df4d74f9d3360b692a0f7ab9bf24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver Error.  <a href="#ga8d5df4d74f9d3360b692a0f7ab9bf24f">More...</a><br /></td></tr>
+<tr class="memdesc:ga8d5df4d74f9d3360b692a0f7ab9bf24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Version Component Types.  <a href="#ga8d5df4d74f9d3360b692a0f7ab9bf24f">More...</a><br /></td></tr>
 <tr class="separator:ga8d5df4d74f9d3360b692a0f7ab9bf24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga13d6d5f408fc9e417e5a44b135fcc078" id="r_ga13d6d5f408fc9e417e5a44b135fcc078"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a225badcad80fbb0b84dd7ef15eaa46a2">oem7::CLOCK_VALID</a> = 0
-, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078ad3af95354020b78b225fa048cd1cac7d">oem7::CLOCK_CONVERGING</a> = 1
-, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a955f16593c98dd9f1eef951bae90a0e8">oem7::CLOCK_ITERATING</a> = 2
-, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078ad2d0968bccd215287de4aa100ac580f8">oem7::CLOCK_INVALID</a> = 3
- }</td></tr>
-<tr class="memdesc:ga13d6d5f408fc9e417e5a44b135fcc078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock Model Status.  <a href="#ga13d6d5f408fc9e417e5a44b135fcc078">More...</a><br /></td></tr>
-<tr class="separator:ga13d6d5f408fc9e417e5a44b135fcc078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga45c2bffe68e8b176135799ef48802eb2" id="r_ga45c2bffe68e8b176135799ef48802eb2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2aecc49055ad3883afb6553e9425315c8d">oem7::UTC_INVALID</a> = 0
-, <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2ac3abbb8f171d88c7427c9a4ac9b62d07">oem7::UTC_VALID</a> = 1
-, <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2ad0ae0782ff3896620e027ed0b4227773">oem7::UTC_WARNING</a> = 2
- }</td></tr>
-<tr class="memdesc:ga45c2bffe68e8b176135799ef48802eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTC Status.  <a href="#ga45c2bffe68e8b176135799ef48802eb2">More...</a><br /></td></tr>
-<tr class="separator:ga45c2bffe68e8b176135799ef48802eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16abaaca1c2b569c430f84238ee9ce8e" id="r_ga16abaaca1c2b569c430f84238ee9ce8e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ead308276397fe96f28611971726f2f49c">oem7::SOL_COMPUTED</a> = 0
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea12f8787a83437c2e1cd4921063e5bd98">oem7::SOL_INSUFFICIENT_OBS</a> = 1
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea22230dd4c01b3fd1709eda64617b2fe1">oem7::SOL_NO_CONVERGENCE</a> = 2
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea643f6849f44ec008d05ee4782f8ef474">oem7::SOL_SINGULARITY</a> = 3
+<tr class="memitem:ga13d6d5f408fc9e417e5a44b135fcc078" id="r_ga13d6d5f408fc9e417e5a44b135fcc078"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078af3c37818fa8ad2e203a94507c22343a4">oem7::ERR_DRAM</a> = 0x00000001
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a7234224ac5e46ac725b7bcef5ca4e280">oem7::ERR_FIRMWARE</a> = 0x00000002
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a6b0477f43fa509101c754410e79e8a38">oem7::ERR_ROM</a> = 0x00000004
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a6448198da67a04bebaf95e1a768df82e">oem7::ERR_ESN</a> = 0x00000010
 , <br />
-&#160;&#160;<a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8eae2c389dd377590ab2dc08e5b9dc5aeb3">oem7::SOL_COV_TRACE</a> = 4
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea465d5f5b9c7ec24e17519433e13549c0">oem7::SOL_TEST_DIST</a> = 5
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea7eaa0a92cabb34593048f62cdc50f7be">oem7::SOL_COLD_START</a> = 6
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8eaed52dad3944992588fa5f6201dcc7f55">oem7::SOL_V_H_LIMIT</a> = 7
+&#160;&#160;<a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078ac3ba6b471cbe0dec50ee5d93a3445c99">oem7::ERR_AUTH</a> = 0x00000020
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a8086c1990b85c776f1cd2b4e17254e80">oem7::ERR_VOLTAGE</a> = 0x00000080
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a27befa5df5924d18a01cdd2dbf568c58">oem7::ERR_TEMPERATURE</a> = 0x00000200
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a25d9434dbf9a9271261ed87f771070b6">oem7::ERR_MINOS</a> = 0x00000400
 , <br />
-&#160;&#160;<a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea840be2ce8ed7a0c6336a9014f97ae30b">oem7::SOL_VARIANCE</a> = 8
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8eabb85de932db923057d9560890b13a8f2">oem7::SOL_RESIDUALS</a> = 9
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea2be9d2c47894e9d36839b7eb4100e57b">oem7::SOL_INTEGRITY_WARNING</a> = 13
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea2cb1cb1596a3b6c2010201c6758d7abe">oem7::SOL_PENDING</a> = 18
+&#160;&#160;<a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078abc36970af8a6d779e13dd7808bfde9ed">oem7::ERR_PLLRF</a> = 0x00000800
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a971df5f5391eef7d1cab52de1d17a8c4">oem7::ERR_NVM</a> = 0x00008000
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a20b0bdaa7d2da1fe1ac59b1fbbce744d">oem7::ERR_SOFT_LIMIT</a> = 0x00010000
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a40a1adcab718494cdbf82e5206ac6eeb">oem7::ERR_MODEL</a> = 0x00020000
 , <br />
-&#160;&#160;<a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea11411915795fa4c24517ebbbe83ecdd3">oem7::SOL_INVALID_FIX</a> = 19
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea4615003838d5d1819684f142c9f72ff9">oem7::SOL_UNAUTHORIZED</a> = 20
-, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ea906220c47a5798f8e1e692c9cf1916f8">oem7::SOL_INVALID_RATE</a> = 22
+&#160;&#160;<a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a646fb5819b4bcf8d5eed60e8804ea962">oem7::ERR_REMOTE</a> = 0x00100000
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a8094ed6bb52da54f0f6a43f401606f86">oem7::ERR_EXPORT</a> = 0x00200000
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a7acc3099510822b627a55fd5628da08a">oem7::ERR_SAFEMODE</a> = 0x00400000
+, <a class="el" href="#gga13d6d5f408fc9e417e5a44b135fcc078a30f2049a084ed1aa1ea84213fa85bba5">oem7::ERR_HARDWARE</a> = 0x80000000
 <br />
  }</td></tr>
-<tr class="memdesc:ga16abaaca1c2b569c430f84238ee9ce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solution Status.  <a href="#ga16abaaca1c2b569c430f84238ee9ce8e">More...</a><br /></td></tr>
+<tr class="memdesc:ga13d6d5f408fc9e417e5a44b135fcc078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver Error.  <a href="#ga13d6d5f408fc9e417e5a44b135fcc078">More...</a><br /></td></tr>
+<tr class="separator:ga13d6d5f408fc9e417e5a44b135fcc078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45c2bffe68e8b176135799ef48802eb2" id="r_ga45c2bffe68e8b176135799ef48802eb2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2a225badcad80fbb0b84dd7ef15eaa46a2">oem7::CLOCK_VALID</a> = 0
+, <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2ad3af95354020b78b225fa048cd1cac7d">oem7::CLOCK_CONVERGING</a> = 1
+, <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2a955f16593c98dd9f1eef951bae90a0e8">oem7::CLOCK_ITERATING</a> = 2
+, <a class="el" href="#gga45c2bffe68e8b176135799ef48802eb2ad2d0968bccd215287de4aa100ac580f8">oem7::CLOCK_INVALID</a> = 3
+ }</td></tr>
+<tr class="memdesc:ga45c2bffe68e8b176135799ef48802eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock Model Status.  <a href="#ga45c2bffe68e8b176135799ef48802eb2">More...</a><br /></td></tr>
+<tr class="separator:ga45c2bffe68e8b176135799ef48802eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16abaaca1c2b569c430f84238ee9ce8e" id="r_ga16abaaca1c2b569c430f84238ee9ce8e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8eaecc49055ad3883afb6553e9425315c8d">oem7::UTC_INVALID</a> = 0
+, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8eac3abbb8f171d88c7427c9a4ac9b62d07">oem7::UTC_VALID</a> = 1
+, <a class="el" href="#gga16abaaca1c2b569c430f84238ee9ce8ead0ae0782ff3896620e027ed0b4227773">oem7::UTC_WARNING</a> = 2
+ }</td></tr>
+<tr class="memdesc:ga16abaaca1c2b569c430f84238ee9ce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTC Status.  <a href="#ga16abaaca1c2b569c430f84238ee9ce8e">More...</a><br /></td></tr>
 <tr class="separator:ga16abaaca1c2b569c430f84238ee9ce8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacae4a45b9f2ed1f03f43fb78624446d2" id="r_gacae4a45b9f2ed1f03f43fb78624446d2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a846f772c3e88a36d267d09f9b7e3d4b0">oem7::POS_NONE</a> = 0
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a926d2f44b6fc86a581b2321fe6ba31b7">oem7::POS_FIXEDPOS</a> = 1
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a943d16a94316fac137a389e75ce14cc6">oem7::POS_FIXEDHEIGHT</a> = 2
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a3aa287f9fd0db9c008a3eaae9b64033c">oem7::POS_DOPPLER_VELOCITY</a> = 8
+&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ad308276397fe96f28611971726f2f49c">oem7::SOL_COMPUTED</a> = 0
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a12f8787a83437c2e1cd4921063e5bd98">oem7::SOL_INSUFFICIENT_OBS</a> = 1
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a22230dd4c01b3fd1709eda64617b2fe1">oem7::SOL_NO_CONVERGENCE</a> = 2
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a643f6849f44ec008d05ee4782f8ef474">oem7::SOL_SINGULARITY</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a3e14e567e43e35a4f29905ab795bff0a">oem7::POS_SINGLE</a> = 16
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a3b5548ac08eb76db6cb57abc110de78b">oem7::POS_PSRDIFF</a> = 17
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a81c0b4f9f2918bcc2d186cbda08dc109">oem7::POS_WAAS</a> = 18
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a4559cc891222915acfc7bec4f921ba78">oem7::POS_PROPAGATED</a> = 19
+&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ae2c389dd377590ab2dc08e5b9dc5aeb3">oem7::SOL_COV_TRACE</a> = 4
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a465d5f5b9c7ec24e17519433e13549c0">oem7::SOL_TEST_DIST</a> = 5
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a7eaa0a92cabb34593048f62cdc50f7be">oem7::SOL_COLD_START</a> = 6
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2aed52dad3944992588fa5f6201dcc7f55">oem7::SOL_V_H_LIMIT</a> = 7
 , <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a725ec9ceeed0f20d9aec470020b0c1ab">oem7::POS_L1_FLOAT</a> = 32
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a1746211c41d153049ba7a483433daf9d">oem7::POS_NARROW_FLOAT</a> = 34
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a0dc3e6ce3def8375a74f17c52da59640">oem7::POS_L1_INT</a> = 48
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a92d7e1223b5a04f48bc6b5d1d53e3f9a">oem7::POS_WIDE_INT</a> = 49
+&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a840be2ce8ed7a0c6336a9014f97ae30b">oem7::SOL_VARIANCE</a> = 8
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2abb85de932db923057d9560890b13a8f2">oem7::SOL_RESIDUALS</a> = 9
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a2be9d2c47894e9d36839b7eb4100e57b">oem7::SOL_INTEGRITY_WARNING</a> = 13
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a2cb1cb1596a3b6c2010201c6758d7abe">oem7::SOL_PENDING</a> = 18
 , <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a1e62a498383cdc8e7e7002001ed8c3b8">oem7::POS_NARROW_INT</a> = 50
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a42e927b9486f99c6e589855020e684c1">oem7::POS_RTK_DIRECT_INS</a> = 51
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ade960e864a2215e1c24ba542ca8f6aa6">oem7::POS_INS_SBAS</a> = 52
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a875052db7e71377c57974cb19bf37737">oem7::POS_INS_PSRSP</a> = 53
-, <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2aafd2a33a4fa9d6189449534345cea225">oem7::POS_INS_PSRDIFF</a> = 54
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a2af4c4498ee9f32a5c54af485ef79316">oem7::POS_INS_RTKFLOAT</a> = 55
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a07ceed39ddd69926b7a1a361caa57c16">oem7::POS_INS_RTKFIXED</a> = 56
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ab1f665b2e01b1201397745430e96180b">oem7::POS_PPP_CONV</a> = 68
-, <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a4b4ad1dad5c6ac7674c6bcc75e74fc24">oem7::POS_PPP</a> = 69
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a014827fab8e004575c675a778d2501b1">oem7::POS_OPERATIONAL</a> = 70
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2aee4edb1f1820ed929a01075c94da6b4f">oem7::POS_WARNING</a> = 71
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ad725e82bdc601154e45a6f7d1cb4fac6">oem7::POS_OUT_OF_BOUNDS</a> = 72
-, <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2aefae1854a4a9e83a9763753ea69e57fe">oem7::POS_INS_PPP_CONV</a> = 73
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a96d7b009a47cda07968c2683a123fb36">oem7::POS_INS_PPP</a> = 74
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a233744b6ebf7cdb9e04319f46c36d626">oem7::POS_PPP_BASIC_CONV</a> = 77
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a76af27035fc9f659e1ba3cb52805498a">oem7::POS_PPP_BASIC</a> = 78
-, <br />
-&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a6c5f9e54312355e9fe09f86f6b4181e0">oem7::POS_INS_PPP_BASIC_CONV</a> = 79
-, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2ae9df794fe6d66beb061f1fd2b811b6a5">oem7::POS_INS_PPP_BASIC</a> = 80
+&#160;&#160;<a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a11411915795fa4c24517ebbbe83ecdd3">oem7::SOL_INVALID_FIX</a> = 19
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a4615003838d5d1819684f142c9f72ff9">oem7::SOL_UNAUTHORIZED</a> = 20
+, <a class="el" href="#ggacae4a45b9f2ed1f03f43fb78624446d2a906220c47a5798f8e1e692c9cf1916f8">oem7::SOL_INVALID_RATE</a> = 22
 <br />
  }</td></tr>
-<tr class="memdesc:gacae4a45b9f2ed1f03f43fb78624446d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position or Velocity Type.  <a href="#gacae4a45b9f2ed1f03f43fb78624446d2">More...</a><br /></td></tr>
+<tr class="memdesc:gacae4a45b9f2ed1f03f43fb78624446d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solution Status.  <a href="#gacae4a45b9f2ed1f03f43fb78624446d2">More...</a><br /></td></tr>
 <tr class="separator:gacae4a45b9f2ed1f03f43fb78624446d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7841c333191789fd651d17274a0c0e3" id="r_gaa7841c333191789fd651d17274a0c0e3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a846f772c3e88a36d267d09f9b7e3d4b0">oem7::POS_NONE</a> = 0
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a926d2f44b6fc86a581b2321fe6ba31b7">oem7::POS_FIXEDPOS</a> = 1
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a943d16a94316fac137a389e75ce14cc6">oem7::POS_FIXEDHEIGHT</a> = 2
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a3aa287f9fd0db9c008a3eaae9b64033c">oem7::POS_DOPPLER_VELOCITY</a> = 8
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a3e14e567e43e35a4f29905ab795bff0a">oem7::POS_SINGLE</a> = 16
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a3b5548ac08eb76db6cb57abc110de78b">oem7::POS_PSRDIFF</a> = 17
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a81c0b4f9f2918bcc2d186cbda08dc109">oem7::POS_WAAS</a> = 18
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a4559cc891222915acfc7bec4f921ba78">oem7::POS_PROPAGATED</a> = 19
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a725ec9ceeed0f20d9aec470020b0c1ab">oem7::POS_L1_FLOAT</a> = 32
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a1746211c41d153049ba7a483433daf9d">oem7::POS_NARROW_FLOAT</a> = 34
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a0dc3e6ce3def8375a74f17c52da59640">oem7::POS_L1_INT</a> = 48
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a92d7e1223b5a04f48bc6b5d1d53e3f9a">oem7::POS_WIDE_INT</a> = 49
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a1e62a498383cdc8e7e7002001ed8c3b8">oem7::POS_NARROW_INT</a> = 50
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a42e927b9486f99c6e589855020e684c1">oem7::POS_RTK_DIRECT_INS</a> = 51
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3ade960e864a2215e1c24ba542ca8f6aa6">oem7::POS_INS_SBAS</a> = 52
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a875052db7e71377c57974cb19bf37737">oem7::POS_INS_PSRSP</a> = 53
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3aafd2a33a4fa9d6189449534345cea225">oem7::POS_INS_PSRDIFF</a> = 54
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a2af4c4498ee9f32a5c54af485ef79316">oem7::POS_INS_RTKFLOAT</a> = 55
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a07ceed39ddd69926b7a1a361caa57c16">oem7::POS_INS_RTKFIXED</a> = 56
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3ab1f665b2e01b1201397745430e96180b">oem7::POS_PPP_CONV</a> = 68
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a4b4ad1dad5c6ac7674c6bcc75e74fc24">oem7::POS_PPP</a> = 69
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a014827fab8e004575c675a778d2501b1">oem7::POS_OPERATIONAL</a> = 70
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3aee4edb1f1820ed929a01075c94da6b4f">oem7::POS_WARNING</a> = 71
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3ad725e82bdc601154e45a6f7d1cb4fac6">oem7::POS_OUT_OF_BOUNDS</a> = 72
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3aefae1854a4a9e83a9763753ea69e57fe">oem7::POS_INS_PPP_CONV</a> = 73
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a96d7b009a47cda07968c2683a123fb36">oem7::POS_INS_PPP</a> = 74
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a233744b6ebf7cdb9e04319f46c36d626">oem7::POS_PPP_BASIC_CONV</a> = 77
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a76af27035fc9f659e1ba3cb52805498a">oem7::POS_PPP_BASIC</a> = 78
+, <br />
+&#160;&#160;<a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3a6c5f9e54312355e9fe09f86f6b4181e0">oem7::POS_INS_PPP_BASIC_CONV</a> = 79
+, <a class="el" href="#ggaa7841c333191789fd651d17274a0c0e3ae9df794fe6d66beb061f1fd2b811b6a5">oem7::POS_INS_PPP_BASIC</a> = 80
+<br />
+ }</td></tr>
+<tr class="memdesc:gaa7841c333191789fd651d17274a0c0e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position or Velocity Type.  <a href="#gaa7841c333191789fd651d17274a0c0e3">More...</a><br /></td></tr>
+<tr class="separator:gaa7841c333191789fd651d17274a0c0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Provide OEM7 Protocol structures and data. </p>
@@ -276,7 +308,9 @@ Enumerations</h2></td></tr>
 <p>Message ID. </p>
 <p>Messages for using in this library </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82" name="gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82"></a>MSG_BESTPOS&#160;</td><td class="fielddoc"><p>Best position. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga34059b445af5e5777ae449aaf95a9463a25aba199656467d31b2698e6c257e652" name="gga34059b445af5e5777ae449aaf95a9463a25aba199656467d31b2698e6c257e652"></a>MSG_VERSION&#160;</td><td class="fielddoc"><p><a class="el" href="structoem7_1_1_version.html" title="VERSION Binary structure">Version</a> information. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82" name="gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82"></a>MSG_BESTPOS&#160;</td><td class="fielddoc"><p>Best position. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga34059b445af5e5777ae449aaf95a9463a707eb109a8786d33584048cabf88bc20" name="gga34059b445af5e5777ae449aaf95a9463a707eb109a8786d33584048cabf88bc20"></a>MSG_RXSTATUS&#160;</td><td class="fielddoc"><p><a class="el" href="classoem7_1_1_receiver.html" title="Provide time, position and heading by GNSS with multiple rovers.">Receiver</a> status. </p>
 </td></tr>
@@ -302,40 +336,46 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classoem7_1_1_receiver.html" title="Provide time, position and heading by GNSS with multiple rovers.">Receiver</a> Error. </p>
-<p><a href="https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError">https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError</a> </p>
+<p><a class="el" href="structoem7_1_1_version.html" title="VERSION Binary structure">Version</a> Component Types. </p>
+<p><a href="https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#ComponentTypes">https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#ComponentTypes</a> </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24faf3c37818fa8ad2e203a94507c22343a4" name="gga8d5df4d74f9d3360b692a0f7ab9bf24faf3c37818fa8ad2e203a94507c22343a4"></a>ERR_DRAM&#160;</td><td class="fielddoc"><p>RAM failure on an OEM7 card may also be indicated by a flashing red LED. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa06e1e6ea345633df5cda34e9090cb34d" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa06e1e6ea345633df5cda34e9090cb34d"></a>VCT_UNKNOWN&#160;</td><td class="fielddoc"><p>Unknown component. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa7234224ac5e46ac725b7bcef5ca4e280" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa7234224ac5e46ac725b7bcef5ca4e280"></a>ERR_FIRMWARE&#160;</td><td class="fielddoc"><p>Invalid firmware. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fac40d07ca8688e3ea3f0c0ea8efb7d4a3" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fac40d07ca8688e3ea3f0c0ea8efb7d4a3"></a>VCT_GPSCARD&#160;</td><td class="fielddoc"><p>OEM7 family receiver. In an enclosure product this is the receiver card in the enclosure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6b0477f43fa509101c754410e79e8a38" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6b0477f43fa509101c754410e79e8a38"></a>ERR_ROM&#160;</td><td class="fielddoc"><p>ROM status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6635dd9bafab927f2f39b0c0ee245122" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6635dd9bafab927f2f39b0c0ee245122"></a>VCT_CONTROLLER&#160;</td><td class="fielddoc"><p>Reserved. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6448198da67a04bebaf95e1a768df82e" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6448198da67a04bebaf95e1a768df82e"></a>ERR_ESN&#160;</td><td class="fielddoc"><p>Electronic Serial Number (ESN) access status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa0ee170ea9dee2e39ce1e087501c3e500" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa0ee170ea9dee2e39ce1e087501c3e500"></a>VCT_ENCLOSURE&#160;</td><td class="fielddoc"><p>OEM card enclosure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fac3ba6b471cbe0dec50ee5d93a3445c99" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fac3ba6b471cbe0dec50ee5d93a3445c99"></a>ERR_AUTH&#160;</td><td class="fielddoc"><p>Authorization code status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa46f2ada7c431aaa5110c97acff315135" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa46f2ada7c431aaa5110c97acff315135"></a>VCT_IMUCARD&#160;</td><td class="fielddoc"><p>IMU integrated in the enclosure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa8086c1990b85c776f1cd2b4e17254e80" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa8086c1990b85c776f1cd2b4e17254e80"></a>ERR_VOLTAGE&#160;</td><td class="fielddoc"><p>Supply voltage status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa76e8586f968a2c4f23897c296d2d4cd0" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa76e8586f968a2c4f23897c296d2d4cd0"></a>VCT_USERINFO&#160;</td><td class="fielddoc"><p>Application specific information. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa27befa5df5924d18a01cdd2dbf568c58" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa27befa5df5924d18a01cdd2dbf568c58"></a>ERR_TEMPERATURE&#160;</td><td class="fielddoc"><p>Temperature status (as compared against acceptable limits) </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fad0858760ab7e097966759099983d926b" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fad0858760ab7e097966759099983d926b"></a>VCT_WIFI&#160;</td><td class="fielddoc"><p>Wi-Fi radio firmware. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa25d9434dbf9a9271261ed87f771070b6" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa25d9434dbf9a9271261ed87f771070b6"></a>ERR_MINOS&#160;</td><td class="fielddoc"><p>MINOS status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa681de544c1c0498659dd299deb1d2492" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa681de544c1c0498659dd299deb1d2492"></a>VCT_RADIO&#160;</td><td class="fielddoc"><p>UHF radio component. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fabc36970af8a6d779e13dd7808bfde9ed" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fabc36970af8a6d779e13dd7808bfde9ed"></a>ERR_PLLRF&#160;</td><td class="fielddoc"><p>PLL RF status. Error with an RF PLL. See AUX2 status bits. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa5188027e46f80e8d36992b983bb43b63" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa5188027e46f80e8d36992b983bb43b63"></a>VCT_WWW_CONTENT&#160;</td><td class="fielddoc"><p>Web Server content. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa971df5f5391eef7d1cab52de1d17a8c4" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa971df5f5391eef7d1cab52de1d17a8c4"></a>ERR_NVM&#160;</td><td class="fielddoc"><p>NVM status. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa00c5014d65685d33610495bb8ade0928" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa00c5014d65685d33610495bb8ade0928"></a>VCT_REGULATORY&#160;</td><td class="fielddoc"><p>Regulatory configuration. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa20b0bdaa7d2da1fe1ac59b1fbbce744d" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa20b0bdaa7d2da1fe1ac59b1fbbce744d"></a>ERR_SOFT_LIMIT&#160;</td><td class="fielddoc"><p>Software resource limit exceeded. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fac7431f464e8899c88bc225ca07214212" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fac7431f464e8899c88bc225ca07214212"></a>VCT_OEM7FPGA&#160;</td><td class="fielddoc"><p>OEM7 FPGA version. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa40a1adcab718494cdbf82e5206ac6eeb" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa40a1adcab718494cdbf82e5206ac6eeb"></a>ERR_MODEL&#160;</td><td class="fielddoc"><p>Model invalid for this receiver. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa32694c2bbd9d4925a3e0ac0ee5d437ad" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa32694c2bbd9d4925a3e0ac0ee5d437ad"></a>VCT_APPLICATION&#160;</td><td class="fielddoc"><p>Embedded application. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa646fb5819b4bcf8d5eed60e8804ea962" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa646fb5819b4bcf8d5eed60e8804ea962"></a>ERR_REMOTE&#160;</td><td class="fielddoc"><p>Remote loading has begun. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24faab3e01b50d71a8b225f7c0a20a0b181f" name="gga8d5df4d74f9d3360b692a0f7ab9bf24faab3e01b50d71a8b225f7c0a20a0b181f"></a>VCT_PACKAGE&#160;</td><td class="fielddoc"><p>Package. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa8094ed6bb52da54f0f6a43f401606f86" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa8094ed6bb52da54f0f6a43f401606f86"></a>ERR_EXPORT&#160;</td><td class="fielddoc"><p>Export restriction. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa26fa0fd3ba46638b4c1926e07b4f35e8" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa26fa0fd3ba46638b4c1926e07b4f35e8"></a>VCT_DEFAULT_CONFIG&#160;</td><td class="fielddoc"><p>Default configuration data. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa7acc3099510822b627a55fd5628da08a" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa7acc3099510822b627a55fd5628da08a"></a>ERR_SAFEMODE&#160;</td><td class="fielddoc"><p>Safe Mode. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24faa8cf00dda9db59afc173718990065719" name="gga8d5df4d74f9d3360b692a0f7ab9bf24faa8cf00dda9db59afc173718990065719"></a>VCT_WHEELSENSOR&#160;</td><td class="fielddoc"><p>Wheel sensor in the enclosure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa30f2049a084ed1aa1ea84213fa85bba5" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa30f2049a084ed1aa1ea84213fa85bba5"></a>ERR_HARDWARE&#160;</td><td class="fielddoc"><p>Component hardware failure. </p>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fac12e98cbe31d48617abab0b6e209f9fd" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fac12e98cbe31d48617abab0b6e209f9fd"></a>VCT_EMBEDDED_AUTH&#160;</td><td class="fielddoc"><p>Embedded Auth Code data. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa0eb3296ade7eb4e662fc416af4b1a454" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa0eb3296ade7eb4e662fc416af4b1a454"></a>VCT_DB_HEIGHTMODEL&#160;</td><td class="fielddoc"><p>Height/track model data. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa69bad810804f16141be4e2854c5bb841" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa69bad810804f16141be4e2854c5bb841"></a>VCT_DB_WWWISO&#160;</td><td class="fielddoc"><p>Web UI ISO Image. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6427b5bcf1c71758dc08f684ad074e66" name="gga8d5df4d74f9d3360b692a0f7ab9bf24fa6427b5bcf1c71758dc08f684ad074e66"></a>VCT_DB_LUA_SCRIPTS&#160;</td><td class="fielddoc"><p>Lua Script ISO Image. </p>
 </td></tr>
 </table>
 
@@ -353,16 +393,40 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Clock Model Status. </p>
-<p><a href="https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus">https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus</a> </p>
+<p><a class="el" href="classoem7_1_1_receiver.html" title="Provide time, position and heading by GNSS with multiple rovers.">Receiver</a> Error. </p>
+<p><a href="https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError">https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError</a> </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a225badcad80fbb0b84dd7ef15eaa46a2" name="gga13d6d5f408fc9e417e5a44b135fcc078a225badcad80fbb0b84dd7ef15eaa46a2"></a>CLOCK_VALID&#160;</td><td class="fielddoc"><p>The clock model is valid. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078af3c37818fa8ad2e203a94507c22343a4" name="gga13d6d5f408fc9e417e5a44b135fcc078af3c37818fa8ad2e203a94507c22343a4"></a>ERR_DRAM&#160;</td><td class="fielddoc"><p>RAM failure on an OEM7 card may also be indicated by a flashing red LED. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078ad3af95354020b78b225fa048cd1cac7d" name="gga13d6d5f408fc9e417e5a44b135fcc078ad3af95354020b78b225fa048cd1cac7d"></a>CLOCK_CONVERGING&#160;</td><td class="fielddoc"><p>The clock model is near validity. </p>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a7234224ac5e46ac725b7bcef5ca4e280" name="gga13d6d5f408fc9e417e5a44b135fcc078a7234224ac5e46ac725b7bcef5ca4e280"></a>ERR_FIRMWARE&#160;</td><td class="fielddoc"><p>Invalid firmware. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a955f16593c98dd9f1eef951bae90a0e8" name="gga13d6d5f408fc9e417e5a44b135fcc078a955f16593c98dd9f1eef951bae90a0e8"></a>CLOCK_ITERATING&#160;</td><td class="fielddoc"><p>The clock model is iterating towards validity. </p>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a6b0477f43fa509101c754410e79e8a38" name="gga13d6d5f408fc9e417e5a44b135fcc078a6b0477f43fa509101c754410e79e8a38"></a>ERR_ROM&#160;</td><td class="fielddoc"><p>ROM status. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078ad2d0968bccd215287de4aa100ac580f8" name="gga13d6d5f408fc9e417e5a44b135fcc078ad2d0968bccd215287de4aa100ac580f8"></a>CLOCK_INVALID&#160;</td><td class="fielddoc"><p>The clock model is not valid. </p>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a6448198da67a04bebaf95e1a768df82e" name="gga13d6d5f408fc9e417e5a44b135fcc078a6448198da67a04bebaf95e1a768df82e"></a>ERR_ESN&#160;</td><td class="fielddoc"><p>Electronic Serial Number (ESN) access status. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078ac3ba6b471cbe0dec50ee5d93a3445c99" name="gga13d6d5f408fc9e417e5a44b135fcc078ac3ba6b471cbe0dec50ee5d93a3445c99"></a>ERR_AUTH&#160;</td><td class="fielddoc"><p>Authorization code status. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a8086c1990b85c776f1cd2b4e17254e80" name="gga13d6d5f408fc9e417e5a44b135fcc078a8086c1990b85c776f1cd2b4e17254e80"></a>ERR_VOLTAGE&#160;</td><td class="fielddoc"><p>Supply voltage status. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a27befa5df5924d18a01cdd2dbf568c58" name="gga13d6d5f408fc9e417e5a44b135fcc078a27befa5df5924d18a01cdd2dbf568c58"></a>ERR_TEMPERATURE&#160;</td><td class="fielddoc"><p>Temperature status (as compared against acceptable limits) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a25d9434dbf9a9271261ed87f771070b6" name="gga13d6d5f408fc9e417e5a44b135fcc078a25d9434dbf9a9271261ed87f771070b6"></a>ERR_MINOS&#160;</td><td class="fielddoc"><p>MINOS status. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078abc36970af8a6d779e13dd7808bfde9ed" name="gga13d6d5f408fc9e417e5a44b135fcc078abc36970af8a6d779e13dd7808bfde9ed"></a>ERR_PLLRF&#160;</td><td class="fielddoc"><p>PLL RF status. Error with an RF PLL. See AUX2 status bits. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a971df5f5391eef7d1cab52de1d17a8c4" name="gga13d6d5f408fc9e417e5a44b135fcc078a971df5f5391eef7d1cab52de1d17a8c4"></a>ERR_NVM&#160;</td><td class="fielddoc"><p>NVM status. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a20b0bdaa7d2da1fe1ac59b1fbbce744d" name="gga13d6d5f408fc9e417e5a44b135fcc078a20b0bdaa7d2da1fe1ac59b1fbbce744d"></a>ERR_SOFT_LIMIT&#160;</td><td class="fielddoc"><p>Software resource limit exceeded. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a40a1adcab718494cdbf82e5206ac6eeb" name="gga13d6d5f408fc9e417e5a44b135fcc078a40a1adcab718494cdbf82e5206ac6eeb"></a>ERR_MODEL&#160;</td><td class="fielddoc"><p>Model invalid for this receiver. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a646fb5819b4bcf8d5eed60e8804ea962" name="gga13d6d5f408fc9e417e5a44b135fcc078a646fb5819b4bcf8d5eed60e8804ea962"></a>ERR_REMOTE&#160;</td><td class="fielddoc"><p>Remote loading has begun. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a8094ed6bb52da54f0f6a43f401606f86" name="gga13d6d5f408fc9e417e5a44b135fcc078a8094ed6bb52da54f0f6a43f401606f86"></a>ERR_EXPORT&#160;</td><td class="fielddoc"><p>Export restriction. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a7acc3099510822b627a55fd5628da08a" name="gga13d6d5f408fc9e417e5a44b135fcc078a7acc3099510822b627a55fd5628da08a"></a>ERR_SAFEMODE&#160;</td><td class="fielddoc"><p>Safe Mode. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga13d6d5f408fc9e417e5a44b135fcc078a30f2049a084ed1aa1ea84213fa85bba5" name="gga13d6d5f408fc9e417e5a44b135fcc078a30f2049a084ed1aa1ea84213fa85bba5"></a>ERR_HARDWARE&#160;</td><td class="fielddoc"><p>Component hardware failure. </p>
 </td></tr>
 </table>
 
@@ -380,13 +444,16 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>UTC Status. </p>
+<p>Clock Model Status. </p>
+<p><a href="https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus">https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus</a> </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2aecc49055ad3883afb6553e9425315c8d" name="gga45c2bffe68e8b176135799ef48802eb2aecc49055ad3883afb6553e9425315c8d"></a>UTC_INVALID&#160;</td><td class="fielddoc"><p>Invalid. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2a225badcad80fbb0b84dd7ef15eaa46a2" name="gga45c2bffe68e8b176135799ef48802eb2a225badcad80fbb0b84dd7ef15eaa46a2"></a>CLOCK_VALID&#160;</td><td class="fielddoc"><p>The clock model is valid. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2ac3abbb8f171d88c7427c9a4ac9b62d07" name="gga45c2bffe68e8b176135799ef48802eb2ac3abbb8f171d88c7427c9a4ac9b62d07"></a>UTC_VALID&#160;</td><td class="fielddoc"><p>Valid. </p>
+<tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2ad3af95354020b78b225fa048cd1cac7d" name="gga45c2bffe68e8b176135799ef48802eb2ad3af95354020b78b225fa048cd1cac7d"></a>CLOCK_CONVERGING&#160;</td><td class="fielddoc"><p>The clock model is near validity. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2ad0ae0782ff3896620e027ed0b4227773" name="gga45c2bffe68e8b176135799ef48802eb2ad0ae0782ff3896620e027ed0b4227773"></a>UTC_WARNING&#160;</td><td class="fielddoc"><p>Warning (Indicates that the leap second value is used as a default due to the lack of an almanac) </p>
+<tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2a955f16593c98dd9f1eef951bae90a0e8" name="gga45c2bffe68e8b176135799ef48802eb2a955f16593c98dd9f1eef951bae90a0e8"></a>CLOCK_ITERATING&#160;</td><td class="fielddoc"><p>The clock model is iterating towards validity. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga45c2bffe68e8b176135799ef48802eb2ad2d0968bccd215287de4aa100ac580f8" name="gga45c2bffe68e8b176135799ef48802eb2ad2d0968bccd215287de4aa100ac580f8"></a>CLOCK_INVALID&#160;</td><td class="fielddoc"><p>The clock model is not valid. </p>
 </td></tr>
 </table>
 
@@ -404,38 +471,13 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Solution Status. </p>
-<p><a href="https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#SolutionStatus">https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#SolutionStatus</a> </p>
+<p>UTC Status. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ead308276397fe96f28611971726f2f49c" name="gga16abaaca1c2b569c430f84238ee9ce8ead308276397fe96f28611971726f2f49c"></a>SOL_COMPUTED&#160;</td><td class="fielddoc"><p>Solution computed. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8eaecc49055ad3883afb6553e9425315c8d" name="gga16abaaca1c2b569c430f84238ee9ce8eaecc49055ad3883afb6553e9425315c8d"></a>UTC_INVALID&#160;</td><td class="fielddoc"><p>Invalid. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea12f8787a83437c2e1cd4921063e5bd98" name="gga16abaaca1c2b569c430f84238ee9ce8ea12f8787a83437c2e1cd4921063e5bd98"></a>SOL_INSUFFICIENT_OBS&#160;</td><td class="fielddoc"><p>Insufficient observations. </p>
+<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8eac3abbb8f171d88c7427c9a4ac9b62d07" name="gga16abaaca1c2b569c430f84238ee9ce8eac3abbb8f171d88c7427c9a4ac9b62d07"></a>UTC_VALID&#160;</td><td class="fielddoc"><p>Valid. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea22230dd4c01b3fd1709eda64617b2fe1" name="gga16abaaca1c2b569c430f84238ee9ce8ea22230dd4c01b3fd1709eda64617b2fe1"></a>SOL_NO_CONVERGENCE&#160;</td><td class="fielddoc"><p>No convergence. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea643f6849f44ec008d05ee4782f8ef474" name="gga16abaaca1c2b569c430f84238ee9ce8ea643f6849f44ec008d05ee4782f8ef474"></a>SOL_SINGULARITY&#160;</td><td class="fielddoc"><p>Singularity at parameters matrix. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8eae2c389dd377590ab2dc08e5b9dc5aeb3" name="gga16abaaca1c2b569c430f84238ee9ce8eae2c389dd377590ab2dc08e5b9dc5aeb3"></a>SOL_COV_TRACE&#160;</td><td class="fielddoc"><p>Covariance trace exceeds maximum (trace &gt; 1000 m) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea465d5f5b9c7ec24e17519433e13549c0" name="gga16abaaca1c2b569c430f84238ee9ce8ea465d5f5b9c7ec24e17519433e13549c0"></a>SOL_TEST_DIST&#160;</td><td class="fielddoc"><p>Test distance exceeded (maximum of 3 rejections if distance &gt;10 km) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea7eaa0a92cabb34593048f62cdc50f7be" name="gga16abaaca1c2b569c430f84238ee9ce8ea7eaa0a92cabb34593048f62cdc50f7be"></a>SOL_COLD_START&#160;</td><td class="fielddoc"><p>Not yet converged from cold start. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8eaed52dad3944992588fa5f6201dcc7f55" name="gga16abaaca1c2b569c430f84238ee9ce8eaed52dad3944992588fa5f6201dcc7f55"></a>SOL_V_H_LIMIT&#160;</td><td class="fielddoc"><p>Height or velocity limits exceeded (in accordance with export licensing restrictions) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea840be2ce8ed7a0c6336a9014f97ae30b" name="gga16abaaca1c2b569c430f84238ee9ce8ea840be2ce8ed7a0c6336a9014f97ae30b"></a>SOL_VARIANCE&#160;</td><td class="fielddoc"><p>Variance exceeds limits. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8eabb85de932db923057d9560890b13a8f2" name="gga16abaaca1c2b569c430f84238ee9ce8eabb85de932db923057d9560890b13a8f2"></a>SOL_RESIDUALS&#160;</td><td class="fielddoc"><p>Residuals are too large. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea2be9d2c47894e9d36839b7eb4100e57b" name="gga16abaaca1c2b569c430f84238ee9ce8ea2be9d2c47894e9d36839b7eb4100e57b"></a>SOL_INTEGRITY_WARNING&#160;</td><td class="fielddoc"><p>Large residuals make position unreliable. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea2cb1cb1596a3b6c2010201c6758d7abe" name="gga16abaaca1c2b569c430f84238ee9ce8ea2cb1cb1596a3b6c2010201c6758d7abe"></a>SOL_PENDING&#160;</td><td class="fielddoc"><p>When a FIX position command is entered, the receiver computes its own position and determines if the fixed position is valid. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea11411915795fa4c24517ebbbe83ecdd3" name="gga16abaaca1c2b569c430f84238ee9ce8ea11411915795fa4c24517ebbbe83ecdd3"></a>SOL_INVALID_FIX&#160;</td><td class="fielddoc"><p>The fixed position, entered using the FIX position command, is not valid. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea4615003838d5d1819684f142c9f72ff9" name="gga16abaaca1c2b569c430f84238ee9ce8ea4615003838d5d1819684f142c9f72ff9"></a>SOL_UNAUTHORIZED&#160;</td><td class="fielddoc"><p>Position type is unauthorized. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ea906220c47a5798f8e1e692c9cf1916f8" name="gga16abaaca1c2b569c430f84238ee9ce8ea906220c47a5798f8e1e692c9cf1916f8"></a>SOL_INVALID_RATE&#160;</td><td class="fielddoc"><p>The selected logging rate is not supported for this solution type. </p>
+<tr><td class="fieldname"><a id="gga16abaaca1c2b569c430f84238ee9ce8ead0ae0782ff3896620e027ed0b4227773" name="gga16abaaca1c2b569c430f84238ee9ce8ead0ae0782ff3896620e027ed0b4227773"></a>UTC_WARNING&#160;</td><td class="fielddoc"><p>Warning (Indicates that the leap second value is used as a default due to the lack of an almanac) </p>
 </td></tr>
 </table>
 
@@ -453,68 +495,117 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Solution Status. </p>
+<p><a href="https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#SolutionStatus">https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#SolutionStatus</a> </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ad308276397fe96f28611971726f2f49c" name="ggacae4a45b9f2ed1f03f43fb78624446d2ad308276397fe96f28611971726f2f49c"></a>SOL_COMPUTED&#160;</td><td class="fielddoc"><p>Solution computed. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a12f8787a83437c2e1cd4921063e5bd98" name="ggacae4a45b9f2ed1f03f43fb78624446d2a12f8787a83437c2e1cd4921063e5bd98"></a>SOL_INSUFFICIENT_OBS&#160;</td><td class="fielddoc"><p>Insufficient observations. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a22230dd4c01b3fd1709eda64617b2fe1" name="ggacae4a45b9f2ed1f03f43fb78624446d2a22230dd4c01b3fd1709eda64617b2fe1"></a>SOL_NO_CONVERGENCE&#160;</td><td class="fielddoc"><p>No convergence. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a643f6849f44ec008d05ee4782f8ef474" name="ggacae4a45b9f2ed1f03f43fb78624446d2a643f6849f44ec008d05ee4782f8ef474"></a>SOL_SINGULARITY&#160;</td><td class="fielddoc"><p>Singularity at parameters matrix. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ae2c389dd377590ab2dc08e5b9dc5aeb3" name="ggacae4a45b9f2ed1f03f43fb78624446d2ae2c389dd377590ab2dc08e5b9dc5aeb3"></a>SOL_COV_TRACE&#160;</td><td class="fielddoc"><p>Covariance trace exceeds maximum (trace &gt; 1000 m) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a465d5f5b9c7ec24e17519433e13549c0" name="ggacae4a45b9f2ed1f03f43fb78624446d2a465d5f5b9c7ec24e17519433e13549c0"></a>SOL_TEST_DIST&#160;</td><td class="fielddoc"><p>Test distance exceeded (maximum of 3 rejections if distance &gt;10 km) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a7eaa0a92cabb34593048f62cdc50f7be" name="ggacae4a45b9f2ed1f03f43fb78624446d2a7eaa0a92cabb34593048f62cdc50f7be"></a>SOL_COLD_START&#160;</td><td class="fielddoc"><p>Not yet converged from cold start. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2aed52dad3944992588fa5f6201dcc7f55" name="ggacae4a45b9f2ed1f03f43fb78624446d2aed52dad3944992588fa5f6201dcc7f55"></a>SOL_V_H_LIMIT&#160;</td><td class="fielddoc"><p>Height or velocity limits exceeded (in accordance with export licensing restrictions) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a840be2ce8ed7a0c6336a9014f97ae30b" name="ggacae4a45b9f2ed1f03f43fb78624446d2a840be2ce8ed7a0c6336a9014f97ae30b"></a>SOL_VARIANCE&#160;</td><td class="fielddoc"><p>Variance exceeds limits. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2abb85de932db923057d9560890b13a8f2" name="ggacae4a45b9f2ed1f03f43fb78624446d2abb85de932db923057d9560890b13a8f2"></a>SOL_RESIDUALS&#160;</td><td class="fielddoc"><p>Residuals are too large. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a2be9d2c47894e9d36839b7eb4100e57b" name="ggacae4a45b9f2ed1f03f43fb78624446d2a2be9d2c47894e9d36839b7eb4100e57b"></a>SOL_INTEGRITY_WARNING&#160;</td><td class="fielddoc"><p>Large residuals make position unreliable. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a2cb1cb1596a3b6c2010201c6758d7abe" name="ggacae4a45b9f2ed1f03f43fb78624446d2a2cb1cb1596a3b6c2010201c6758d7abe"></a>SOL_PENDING&#160;</td><td class="fielddoc"><p>When a FIX position command is entered, the receiver computes its own position and determines if the fixed position is valid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a11411915795fa4c24517ebbbe83ecdd3" name="ggacae4a45b9f2ed1f03f43fb78624446d2a11411915795fa4c24517ebbbe83ecdd3"></a>SOL_INVALID_FIX&#160;</td><td class="fielddoc"><p>The fixed position, entered using the FIX position command, is not valid. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a4615003838d5d1819684f142c9f72ff9" name="ggacae4a45b9f2ed1f03f43fb78624446d2a4615003838d5d1819684f142c9f72ff9"></a>SOL_UNAUTHORIZED&#160;</td><td class="fielddoc"><p>Position type is unauthorized. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a906220c47a5798f8e1e692c9cf1916f8" name="ggacae4a45b9f2ed1f03f43fb78624446d2a906220c47a5798f8e1e692c9cf1916f8"></a>SOL_INVALID_RATE&#160;</td><td class="fielddoc"><p>The selected logging rate is not supported for this solution type. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="gaa7841c333191789fd651d17274a0c0e3" name="gaa7841c333191789fd651d17274a0c0e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa7841c333191789fd651d17274a0c0e3">&#9670;&#160;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Position or Velocity Type. </p>
 <p><a href="https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#Position_VelocityType">https://docs.novatel.com/OEM7/Content/Logs/BESTPOS.htm#Position_VelocityType</a> </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a846f772c3e88a36d267d09f9b7e3d4b0" name="ggacae4a45b9f2ed1f03f43fb78624446d2a846f772c3e88a36d267d09f9b7e3d4b0"></a>POS_NONE&#160;</td><td class="fielddoc"><p>No solution. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a846f772c3e88a36d267d09f9b7e3d4b0" name="ggaa7841c333191789fd651d17274a0c0e3a846f772c3e88a36d267d09f9b7e3d4b0"></a>POS_NONE&#160;</td><td class="fielddoc"><p>No solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a926d2f44b6fc86a581b2321fe6ba31b7" name="ggacae4a45b9f2ed1f03f43fb78624446d2a926d2f44b6fc86a581b2321fe6ba31b7"></a>POS_FIXEDPOS&#160;</td><td class="fielddoc"><p>Position has been fixed by the FIX position command or by position averaging. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a926d2f44b6fc86a581b2321fe6ba31b7" name="ggaa7841c333191789fd651d17274a0c0e3a926d2f44b6fc86a581b2321fe6ba31b7"></a>POS_FIXEDPOS&#160;</td><td class="fielddoc"><p>Position has been fixed by the FIX position command or by position averaging. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a943d16a94316fac137a389e75ce14cc6" name="ggacae4a45b9f2ed1f03f43fb78624446d2a943d16a94316fac137a389e75ce14cc6"></a>POS_FIXEDHEIGHT&#160;</td><td class="fielddoc"><p>Position has been fixed by the FIX height or FIX auto command or by position averaging. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a943d16a94316fac137a389e75ce14cc6" name="ggaa7841c333191789fd651d17274a0c0e3a943d16a94316fac137a389e75ce14cc6"></a>POS_FIXEDHEIGHT&#160;</td><td class="fielddoc"><p>Position has been fixed by the FIX height or FIX auto command or by position averaging. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a3aa287f9fd0db9c008a3eaae9b64033c" name="ggacae4a45b9f2ed1f03f43fb78624446d2a3aa287f9fd0db9c008a3eaae9b64033c"></a>POS_DOPPLER_VELOCITY&#160;</td><td class="fielddoc"><p>Velocity computed using instantaneous Doppler. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a3aa287f9fd0db9c008a3eaae9b64033c" name="ggaa7841c333191789fd651d17274a0c0e3a3aa287f9fd0db9c008a3eaae9b64033c"></a>POS_DOPPLER_VELOCITY&#160;</td><td class="fielddoc"><p>Velocity computed using instantaneous Doppler. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a3e14e567e43e35a4f29905ab795bff0a" name="ggacae4a45b9f2ed1f03f43fb78624446d2a3e14e567e43e35a4f29905ab795bff0a"></a>POS_SINGLE&#160;</td><td class="fielddoc"><p>Solution calculated using only data supplied by the GNSS satellites. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a3e14e567e43e35a4f29905ab795bff0a" name="ggaa7841c333191789fd651d17274a0c0e3a3e14e567e43e35a4f29905ab795bff0a"></a>POS_SINGLE&#160;</td><td class="fielddoc"><p>Solution calculated using only data supplied by the GNSS satellites. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a3b5548ac08eb76db6cb57abc110de78b" name="ggacae4a45b9f2ed1f03f43fb78624446d2a3b5548ac08eb76db6cb57abc110de78b"></a>POS_PSRDIFF&#160;</td><td class="fielddoc"><p>Solution calculated using pseudorange differential (DGPS, DGNSS) corrections. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a3b5548ac08eb76db6cb57abc110de78b" name="ggaa7841c333191789fd651d17274a0c0e3a3b5548ac08eb76db6cb57abc110de78b"></a>POS_PSRDIFF&#160;</td><td class="fielddoc"><p>Solution calculated using pseudorange differential (DGPS, DGNSS) corrections. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a81c0b4f9f2918bcc2d186cbda08dc109" name="ggacae4a45b9f2ed1f03f43fb78624446d2a81c0b4f9f2918bcc2d186cbda08dc109"></a>POS_WAAS&#160;</td><td class="fielddoc"><p>Solution calculated using corrections from an SBAS satellite. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a81c0b4f9f2918bcc2d186cbda08dc109" name="ggaa7841c333191789fd651d17274a0c0e3a81c0b4f9f2918bcc2d186cbda08dc109"></a>POS_WAAS&#160;</td><td class="fielddoc"><p>Solution calculated using corrections from an SBAS satellite. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a4559cc891222915acfc7bec4f921ba78" name="ggacae4a45b9f2ed1f03f43fb78624446d2a4559cc891222915acfc7bec4f921ba78"></a>POS_PROPAGATED&#160;</td><td class="fielddoc"><p>Propagated by a Kalman filter without new observations. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a4559cc891222915acfc7bec4f921ba78" name="ggaa7841c333191789fd651d17274a0c0e3a4559cc891222915acfc7bec4f921ba78"></a>POS_PROPAGATED&#160;</td><td class="fielddoc"><p>Propagated by a Kalman filter without new observations. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a725ec9ceeed0f20d9aec470020b0c1ab" name="ggacae4a45b9f2ed1f03f43fb78624446d2a725ec9ceeed0f20d9aec470020b0c1ab"></a>POS_L1_FLOAT&#160;</td><td class="fielddoc"><p>Single-frequency RTK solution with unresolved, float carrier phase ambiguities. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a725ec9ceeed0f20d9aec470020b0c1ab" name="ggaa7841c333191789fd651d17274a0c0e3a725ec9ceeed0f20d9aec470020b0c1ab"></a>POS_L1_FLOAT&#160;</td><td class="fielddoc"><p>Single-frequency RTK solution with unresolved, float carrier phase ambiguities. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a1746211c41d153049ba7a483433daf9d" name="ggacae4a45b9f2ed1f03f43fb78624446d2a1746211c41d153049ba7a483433daf9d"></a>POS_NARROW_FLOAT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with unresolved, float carrier phase ambiguities. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a1746211c41d153049ba7a483433daf9d" name="ggaa7841c333191789fd651d17274a0c0e3a1746211c41d153049ba7a483433daf9d"></a>POS_NARROW_FLOAT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with unresolved, float carrier phase ambiguities. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a0dc3e6ce3def8375a74f17c52da59640" name="ggacae4a45b9f2ed1f03f43fb78624446d2a0dc3e6ce3def8375a74f17c52da59640"></a>POS_L1_INT&#160;</td><td class="fielddoc"><p>Single-frequency RTK solution with carrier phase ambiguities resolved to integers. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a0dc3e6ce3def8375a74f17c52da59640" name="ggaa7841c333191789fd651d17274a0c0e3a0dc3e6ce3def8375a74f17c52da59640"></a>POS_L1_INT&#160;</td><td class="fielddoc"><p>Single-frequency RTK solution with carrier phase ambiguities resolved to integers. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a92d7e1223b5a04f48bc6b5d1d53e3f9a" name="ggacae4a45b9f2ed1f03f43fb78624446d2a92d7e1223b5a04f48bc6b5d1d53e3f9a"></a>POS_WIDE_INT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with carrier phase ambiguities resolved to widelane integers. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a92d7e1223b5a04f48bc6b5d1d53e3f9a" name="ggaa7841c333191789fd651d17274a0c0e3a92d7e1223b5a04f48bc6b5d1d53e3f9a"></a>POS_WIDE_INT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with carrier phase ambiguities resolved to widelane integers. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a1e62a498383cdc8e7e7002001ed8c3b8" name="ggacae4a45b9f2ed1f03f43fb78624446d2a1e62a498383cdc8e7e7002001ed8c3b8"></a>POS_NARROW_INT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with carrier phase ambiguities resolved to narrow-lane integers. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a1e62a498383cdc8e7e7002001ed8c3b8" name="ggaa7841c333191789fd651d17274a0c0e3a1e62a498383cdc8e7e7002001ed8c3b8"></a>POS_NARROW_INT&#160;</td><td class="fielddoc"><p>Multi-frequency RTK solution with carrier phase ambiguities resolved to narrow-lane integers. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a42e927b9486f99c6e589855020e684c1" name="ggacae4a45b9f2ed1f03f43fb78624446d2a42e927b9486f99c6e589855020e684c1"></a>POS_RTK_DIRECT_INS&#160;</td><td class="fielddoc"><p>RTK status where the RTK filter is directly initialized from the INS filter. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a42e927b9486f99c6e589855020e684c1" name="ggaa7841c333191789fd651d17274a0c0e3a42e927b9486f99c6e589855020e684c1"></a>POS_RTK_DIRECT_INS&#160;</td><td class="fielddoc"><p>RTK status where the RTK filter is directly initialized from the INS filter. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ade960e864a2215e1c24ba542ca8f6aa6" name="ggacae4a45b9f2ed1f03f43fb78624446d2ade960e864a2215e1c24ba542ca8f6aa6"></a>POS_INS_SBAS&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a GNSS solution computed using corrections from an SBAS (WAAS) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3ade960e864a2215e1c24ba542ca8f6aa6" name="ggaa7841c333191789fd651d17274a0c0e3ade960e864a2215e1c24ba542ca8f6aa6"></a>POS_INS_SBAS&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a GNSS solution computed using corrections from an SBAS (WAAS) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a875052db7e71377c57974cb19bf37737" name="ggacae4a45b9f2ed1f03f43fb78624446d2a875052db7e71377c57974cb19bf37737"></a>POS_INS_PSRSP&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a single point GNSS (SINGLE) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a875052db7e71377c57974cb19bf37737" name="ggaa7841c333191789fd651d17274a0c0e3a875052db7e71377c57974cb19bf37737"></a>POS_INS_PSRSP&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a single point GNSS (SINGLE) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2aafd2a33a4fa9d6189449534345cea225" name="ggacae4a45b9f2ed1f03f43fb78624446d2aafd2a33a4fa9d6189449534345cea225"></a>POS_INS_PSRDIFF&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a pseudorange differential GNSS (PSRDIFF) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3aafd2a33a4fa9d6189449534345cea225" name="ggaa7841c333191789fd651d17274a0c0e3aafd2a33a4fa9d6189449534345cea225"></a>POS_INS_PSRDIFF&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a pseudorange differential GNSS (PSRDIFF) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a2af4c4498ee9f32a5c54af485ef79316" name="ggacae4a45b9f2ed1f03f43fb78624446d2a2af4c4498ee9f32a5c54af485ef79316"></a>POS_INS_RTKFLOAT&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a floating ambiguity RTK (L1_FLOAT or NARROW_FLOAT) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a2af4c4498ee9f32a5c54af485ef79316" name="ggaa7841c333191789fd651d17274a0c0e3a2af4c4498ee9f32a5c54af485ef79316"></a>POS_INS_RTKFLOAT&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a floating ambiguity RTK (L1_FLOAT or NARROW_FLOAT) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a07ceed39ddd69926b7a1a361caa57c16" name="ggacae4a45b9f2ed1f03f43fb78624446d2a07ceed39ddd69926b7a1a361caa57c16"></a>POS_INS_RTKFIXED&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a fixed integer ambiguity RTK (L1_INT, WIDE_INT or NARROW_INT) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a07ceed39ddd69926b7a1a361caa57c16" name="ggaa7841c333191789fd651d17274a0c0e3a07ceed39ddd69926b7a1a361caa57c16"></a>POS_INS_RTKFIXED&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a fixed integer ambiguity RTK (L1_INT, WIDE_INT or NARROW_INT) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ab1f665b2e01b1201397745430e96180b" name="ggacae4a45b9f2ed1f03f43fb78624446d2ab1f665b2e01b1201397745430e96180b"></a>POS_PPP_CONV&#160;</td><td class="fielddoc"><p>Converging TerraStar-C, TerraStar-C PRO or TerraStar-X solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3ab1f665b2e01b1201397745430e96180b" name="ggaa7841c333191789fd651d17274a0c0e3ab1f665b2e01b1201397745430e96180b"></a>POS_PPP_CONV&#160;</td><td class="fielddoc"><p>Converging TerraStar-C, TerraStar-C PRO or TerraStar-X solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a4b4ad1dad5c6ac7674c6bcc75e74fc24" name="ggacae4a45b9f2ed1f03f43fb78624446d2a4b4ad1dad5c6ac7674c6bcc75e74fc24"></a>POS_PPP&#160;</td><td class="fielddoc"><p>Converged TerraStar-C, TerraStar-C PRO or TerraStar-X solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a4b4ad1dad5c6ac7674c6bcc75e74fc24" name="ggaa7841c333191789fd651d17274a0c0e3a4b4ad1dad5c6ac7674c6bcc75e74fc24"></a>POS_PPP&#160;</td><td class="fielddoc"><p>Converged TerraStar-C, TerraStar-C PRO or TerraStar-X solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a014827fab8e004575c675a778d2501b1" name="ggacae4a45b9f2ed1f03f43fb78624446d2a014827fab8e004575c675a778d2501b1"></a>POS_OPERATIONAL&#160;</td><td class="fielddoc"><p>Solution accuracy is within UAL operational limit. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a014827fab8e004575c675a778d2501b1" name="ggaa7841c333191789fd651d17274a0c0e3a014827fab8e004575c675a778d2501b1"></a>POS_OPERATIONAL&#160;</td><td class="fielddoc"><p>Solution accuracy is within UAL operational limit. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2aee4edb1f1820ed929a01075c94da6b4f" name="ggacae4a45b9f2ed1f03f43fb78624446d2aee4edb1f1820ed929a01075c94da6b4f"></a>POS_WARNING&#160;</td><td class="fielddoc"><p>Solution accuracy is outside UAL operational limit but within warning limit. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3aee4edb1f1820ed929a01075c94da6b4f" name="ggaa7841c333191789fd651d17274a0c0e3aee4edb1f1820ed929a01075c94da6b4f"></a>POS_WARNING&#160;</td><td class="fielddoc"><p>Solution accuracy is outside UAL operational limit but within warning limit. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ad725e82bdc601154e45a6f7d1cb4fac6" name="ggacae4a45b9f2ed1f03f43fb78624446d2ad725e82bdc601154e45a6f7d1cb4fac6"></a>POS_OUT_OF_BOUNDS&#160;</td><td class="fielddoc"><p>Solution accuracy is outside UAL limits. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3ad725e82bdc601154e45a6f7d1cb4fac6" name="ggaa7841c333191789fd651d17274a0c0e3ad725e82bdc601154e45a6f7d1cb4fac6"></a>POS_OUT_OF_BOUNDS&#160;</td><td class="fielddoc"><p>Solution accuracy is outside UAL limits. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2aefae1854a4a9e83a9763753ea69e57fe" name="ggacae4a45b9f2ed1f03f43fb78624446d2aefae1854a4a9e83a9763753ea69e57fe"></a>POS_INS_PPP_CONV&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converging TerraStar-C, TerraStar-C PRO or TerraStar-X PPP (PPP_CONVERGING) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3aefae1854a4a9e83a9763753ea69e57fe" name="ggaa7841c333191789fd651d17274a0c0e3aefae1854a4a9e83a9763753ea69e57fe"></a>POS_INS_PPP_CONV&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converging TerraStar-C, TerraStar-C PRO or TerraStar-X PPP (PPP_CONVERGING) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a96d7b009a47cda07968c2683a123fb36" name="ggacae4a45b9f2ed1f03f43fb78624446d2a96d7b009a47cda07968c2683a123fb36"></a>POS_INS_PPP&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converged TerraStar-C, TerraStar-C PRO or TerraStar-X PPP (PPP) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a96d7b009a47cda07968c2683a123fb36" name="ggaa7841c333191789fd651d17274a0c0e3a96d7b009a47cda07968c2683a123fb36"></a>POS_INS_PPP&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converged TerraStar-C, TerraStar-C PRO or TerraStar-X PPP (PPP) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a233744b6ebf7cdb9e04319f46c36d626" name="ggacae4a45b9f2ed1f03f43fb78624446d2a233744b6ebf7cdb9e04319f46c36d626"></a>POS_PPP_BASIC_CONV&#160;</td><td class="fielddoc"><p>Converging TerraStar-L solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a233744b6ebf7cdb9e04319f46c36d626" name="ggaa7841c333191789fd651d17274a0c0e3a233744b6ebf7cdb9e04319f46c36d626"></a>POS_PPP_BASIC_CONV&#160;</td><td class="fielddoc"><p>Converging TerraStar-L solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a76af27035fc9f659e1ba3cb52805498a" name="ggacae4a45b9f2ed1f03f43fb78624446d2a76af27035fc9f659e1ba3cb52805498a"></a>POS_PPP_BASIC&#160;</td><td class="fielddoc"><p>Converged TerraStar-L solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a76af27035fc9f659e1ba3cb52805498a" name="ggaa7841c333191789fd651d17274a0c0e3a76af27035fc9f659e1ba3cb52805498a"></a>POS_PPP_BASIC&#160;</td><td class="fielddoc"><p>Converged TerraStar-L solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2a6c5f9e54312355e9fe09f86f6b4181e0" name="ggacae4a45b9f2ed1f03f43fb78624446d2a6c5f9e54312355e9fe09f86f6b4181e0"></a>POS_INS_PPP_BASIC_CONV&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converging TerraStar-L PPP (PPP_BASIC) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3a6c5f9e54312355e9fe09f86f6b4181e0" name="ggaa7841c333191789fd651d17274a0c0e3a6c5f9e54312355e9fe09f86f6b4181e0"></a>POS_INS_PPP_BASIC_CONV&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converging TerraStar-L PPP (PPP_BASIC) solution. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggacae4a45b9f2ed1f03f43fb78624446d2ae9df794fe6d66beb061f1fd2b811b6a5" name="ggacae4a45b9f2ed1f03f43fb78624446d2ae9df794fe6d66beb061f1fd2b811b6a5"></a>POS_INS_PPP_BASIC&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converged TerraStar-L PPP (PPP_BASIC) solution. </p>
+<tr><td class="fieldname"><a id="ggaa7841c333191789fd651d17274a0c0e3ae9df794fe6d66beb061f1fd2b811b6a5" name="ggaa7841c333191789fd651d17274a0c0e3ae9df794fe6d66beb061f1fd2b811b6a5"></a>POS_INS_PPP_BASIC&#160;</td><td class="fielddoc"><p>INS position, where the last applied position update used a converged TerraStar-L PPP (PPP_BASIC) solution. </p>
 </td></tr>
 </table>
 

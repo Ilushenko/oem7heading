@@ -11,5 +11,6 @@ var searchData=
   ['solutionstatus_8',['solutionStatus',['../structoem7_1_1_best_pos.html#a9db140421bfd498dc50debf756d4b74b',1,'oem7::BestPos::solutionStatus'],['../structoem7_1_1_heading2.html#aa22f4d273c292e6ddeedb1bb6f59662a',1,'oem7::Heading2::solutionStatus'],['../structoem7_1_1_dual_ant_heading.html#ae6e997529fcab090a1f5020fa58b9c8c',1,'oem7::DualAntHeading::solutionStatus']]],
   ['solutionstatusex_9',['solutionStatusEx',['../structoem7_1_1_best_pos.html#aa458b4babed16fec70544e7328aec334',1,'oem7::BestPos::solutionStatusEx'],['../structoem7_1_1_heading2.html#a670cc38b85dde1c93c6a6d2001b9ebe5',1,'oem7::Heading2::solutionStatusEx'],['../structoem7_1_1_dual_ant_heading.html#acdeb84c5d536cbd469beb6bb7010f59f',1,'oem7::DualAntHeading::solutionStatusEx']]],
   ['stationid_10',['stationID',['../structoem7_1_1_dual_ant_heading.html#a379b7d695250aee8f78197e058f707b8',1,'oem7::DualAntHeading']]],
-  ['sw_11',['sw',['../structoem7_1_1_version.html#a8a5f3fb5eb60d7aded8cfcfb32a0aa9c',1,'oem7::Version']]]
+  ['status_11',['status',['../structoem7_1_1_h_w_monitor.html#a2c326472c12076bf7dc52a7c5b54f110',1,'oem7::HWMonitor']]],
+  ['sw_12',['sw',['../structoem7_1_1_version.html#a8a5f3fb5eb60d7aded8cfcfb32a0aa9c',1,'oem7::Version']]]
 ];

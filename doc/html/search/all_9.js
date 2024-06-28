@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['model_0',['model',['../structoem7_1_1_version.html#a48e0cc59b114f0edaf2db6fd623682ba',1,'oem7::Version']]],
-  ['ms_1',['ms',['../structoem7_1_1_head.html#ab3580a37b795c2fcbbe84a94a92fda62',1,'oem7::Head']]],
-  ['msg_5fbestpos_2',['MSG_BESTPOS',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463a30234053ce9ee2f009ece252eefeeb82',1,'oem7']]],
-  ['msg_5fdualantheading_3',['MSG_DUALANTHEADING',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463ac6ce60a1ae85dfa4a5b94477ff697c1b',1,'oem7']]],
-  ['msg_5fheading2_4',['MSG_HEADING2',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463a00e6999dcd130a30a7d8e59128ff7b7c',1,'oem7']]],
-  ['msg_5frxstatus_5',['MSG_RXSTATUS',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463a707eb109a8786d33584048cabf88bc20',1,'oem7']]],
-  ['msg_5ftime_6',['MSG_TIME',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463a04edd4fd79d0559ee9dc603a82acd2ae',1,'oem7']]],
-  ['msg_5fversion_7',['MSG_VERSION',['../group__oem7data.html#gga34059b445af5e5777ae449aaf95a9463a25aba199656467d31b2698e6c257e652',1,'oem7']]],
-  ['msgid_8',['msgId',['../structoem7_1_1_head.html#a6436aa7a1ee7874d7b1fa660143a94d5',1,'oem7::Head']]],
-  ['msglenght_9',['msgLenght',['../structoem7_1_1_head.html#ac998a62b432834647cc6a6c9417a2a6c',1,'oem7::Head']]],
-  ['msgtype_10',['msgType',['../structoem7_1_1_head.html#ac821975105758de9f1f18f408bc64f89',1,'oem7::Head']]]
+  ['lat_0',['lat',['../structoem7_1_1_best_pos.html#a70db4066be079eb9ba64c9f80f9faf3a',1,'oem7::BestPos::lat'],['../classoem7_1_1_receiver.html#abd6a65a30eab2ef6d99537f645dc18fd',1,'oem7::Receiver::lat() const']]],
+  ['latdev_1',['latDev',['../classoem7_1_1_receiver.html#a9d34990dfba61a6da8e3a9f16a8004bd',1,'oem7::Receiver']]],
+  ['latstddev_2',['latStdDev',['../structoem7_1_1_best_pos.html#a47e4e55701b065033fe38201d255bcb3',1,'oem7::BestPos']]],
+  ['length_3',['length',['../structoem7_1_1_heading2.html#a6b4a34ca8a2730be34d16c831ff64dbd',1,'oem7::Heading2::length'],['../structoem7_1_1_dual_ant_heading.html#af78516185ee3bae19c512f19e6f01f59',1,'oem7::DualAntHeading::length']]],
+  ['library_4',['OEM7 Heading Library',['../index.html',1,'']]],
+  ['logs_5',['Debug Logs',['../index.html#autotoc_md4',1,'']]],
+  ['lon_6',['lon',['../structoem7_1_1_best_pos.html#ae87bb1695d24a03944484d24fe4c48d1',1,'oem7::BestPos::lon'],['../classoem7_1_1_receiver.html#a2a44726ce6f229f53a7032c6d86e3a5b',1,'oem7::Receiver::lon() const']]],
+  ['londev_7',['lonDev',['../classoem7_1_1_receiver.html#a0eef4c97b255265f39ef427794af99ab',1,'oem7::Receiver']]],
+  ['lonstddev_8',['lonStdDev',['../structoem7_1_1_best_pos.html#a8f8f8d1b7bd67b32277ecae784bf9a8c',1,'oem7::BestPos']]]
 ];

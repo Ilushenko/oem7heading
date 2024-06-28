@@ -18,7 +18,7 @@
 /// \anchor strualign
 /// \note All structures must defined with 1-byte alignment
 /// \li Use \c __attribute__((__packed__)) by \b GCC
-/// \li Use \c #pragma \c pack(push,1) and \c #pragma \c pack(pop) directives by \b Win32
+/// \li Use \c \#pragma \c pack(push,1) and \c \#pragma \c pack(pop) directives by \b Win32
 
 #ifdef WIN32
 #define ATTR_PACKED
@@ -47,7 +47,9 @@ namespace oem7 {
         MSG_VERSION             = 37,   ///< Version information
         MSG_BESTPOS		        = 42,	///< Best position
         MSG_RXSTATUS	        = 93,	///< Receiver status
+        MSG_RXSTATUSEVENT       = 94,   ///< Status event indicator
         MSG_TIME		        = 101,	///< Time data
+        MSG_HWMONITOR           = 963,  ///< Monitor hardware levels
         MSG_HEADING2            = 1335,	///< Heading information with multiple rovers
         MSG_DUALANTHEADING      = 2042  ///< Synchronous heading information for dual antenna product
     };
@@ -79,11 +81,79 @@ namespace oem7 {
         VCT_DB_WWWISO       = 0x3A7A0008,   ///< Web UI ISO Image
         VCT_DB_LUA_SCRIPTS  = 0x3A7A000A    ///< Lua Script ISO Image
     };
+    /// \brief User-Defined Antenna Type
+    /// \details https://docs.novatel.com/OEM7/Content/Commands/ANTENNATYPE.htm#User-Def
+    /// \ingroup oem7data
+    enum {
+        USER_ANTENNA_1 = 1001,
+        USER_ANTENNA_2 = 1002,
+        USER_ANTENNA_3 = 1003,
+        USER_ANTENNA_4 = 1004,
+        USER_ANTENNA_5 = 1005
+    };
+    /// \brief Frequency Type
+    /// \details https://docs.novatel.com/OEM7/Content/Commands/BASEANTENNAPCO.htm#FrequencyType
+    /// \ingroup oem7data
+    enum {
+        FREQ_GPSL1          = 0,    ///< GPS L1
+        FREQ_GPSL2          = 1,    ///< GPS L2
+        FREQ_GLONASSL1      = 2,    ///< GLONASS L1
+        FREQ_GLONASSL2      = 3,    ///< GLONASS L2
+        FREQ_GPSL5          = 5,    ///< GPS L5
+        FREQ_GALILEOE1      = 7,    ///< Galileo E1
+        FREQ_GALILEOE5A     = 8,    ///< Galileo E5a
+        FREQ_GALILEOE5B     = 9,    ///< Galileo E5b
+        FREQ_GALILEOALTBOC  = 10,   ///< Galileo AltBOC
+        FREQ_BEIDOUB1       = 11,   ///< BeiDou B1
+        FREQ_BEIDOUB2       = 12,   ///< BeiDou B2
+        FREQ_QZSSL1         = 13,   ///< QZSS L1
+        FREQ_QZSSL2         = 14,   ///< QZSS L2
+        FREQ_QZSSL5         = 15    ///< QZSS L5
+    };
+    /// \brief Status Word
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUSEVENT.htm#StatusWord
+    /// \ingroup oem7data
+    enum {
+        WORD_ERROR  = 0,    ///< Receiver Error word
+        WORD_STATUS = 1,    ///< Receiver Status word
+        WORD_AUX1   = 2,    ///< Auxiliary 1 Status word
+        WORD_AUX2   = 3,    ///< Auxiliary 2 Status word
+        WORD_AUX3   = 4,    ///< Auxiliary 3 Status word
+        WORD_AUX4   = 5     ///< Auxiliary 4 Status word
+    };
+    /// \brief Hardware Monitor Boundary Limit Status
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/HWMONITOR.htm#HWMONITORStatusTable
+    /// \ingroup oem7data
+    enum {
+        BOUNDARY_ACCEPT         = 0x00, ///< Value falls within acceptable bounds
+        BOUNDARY_LOW_WARNING    = 0x01, ///< Value is under the lower warning limit
+        BOUNDARY_LOW_ERROR      = 0x02, ///< Value is under the lower error limit
+        BOUNDARY_UP_WARNING     = 0x03, ///< Value is over the upper warning limit
+        BOUNDARY_UP_ERROR       = 0x04  ///< Value is over the upper error limit
+    };
+    /// \brief Hardware Monitor Reading Type
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/HWMONITOR.htm#HWMONITORStatusTable
+    /// \ingroup oem7data
+    enum {
+        HW_RESERVED         = 0x00, ///< Reserved
+        HW_TEMPERATURE1     = 0x01, ///< Temperature (degrees Celsius)
+        HW_A1_AMPERAGE      = 0x02, ///< Antenna Current
+        HW_CORE_3V3         = 0x06, ///< Digital Core 3V3 Voltage
+        HW_A1_VOLTAGE       = 0x07, ///< Primary Antenna Voltage
+        HW_CORE_1V2         = 0x08, ///< Digital 1V2 Core Voltage
+        HW_SUPPLY_VOLTAGE   = 0x0F, ///< Regulated Supply Voltage
+        HW_CORE_1V8         = 0x11, ///< Digital 1V8 Core Voltage
+        HW_CORE_5V          = 0x15, ///< 5V Voltage (Volts)
+        HW_TEMPERATURE2     = 0x16, ///< A second temperature sensor (degrees Celsius)
+        HW_PERIPHERAL       = 0x17, ///< Peripheral Core Voltage
+        HW_A2_AMPERAGE      = 0x18, ///< Secondary Antenna Amperage
+        HW_A2_VOLTAGE       = 0x19  ///< Secondary Antenna Voltage
+    };
     /// \brief Receiver Error
     /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm#ReceiverError
     /// \ingroup oem7data
     enum {
-        ERR_DRAM		        = 0x00000001,	///< RAM failure on an OEM7 card may also be indicated by a flashing red LED
+        ERR_DRAM		        = 0x00000001,   ///< RAM failure on an OEM7 card may also be indicated by a flashing red LED
         ERR_FIRMWARE	        = 0x00000002,	///< Invalid firmware
         ERR_ROM			        = 0x00000004,	///< ROM status
         ERR_ESN			        = 0x00000010,	///< Electronic Serial Number (ESN) access status
@@ -104,15 +174,15 @@ namespace oem7 {
     /// \details https://docs.novatel.com/OEM7/Content/Logs/CLOCKMODEL.htm#ClockModelStatus
     /// \ingroup oem7data
     enum {
-        CLOCK_VALID			    = 0, ///< The clock model is valid
-        CLOCK_CONVERGING        = 1, ///< The clock model is near validity
-        CLOCK_ITERATING		    = 2, ///< The clock model is iterating towards validity
-        CLOCK_INVALID		    = 3  ///< The clock model is not valid
+        CLOCK_VALID			    = 0,    ///< The clock model is valid
+        CLOCK_CONVERGING        = 1,    ///< The clock model is near validity
+        CLOCK_ITERATING		    = 2,    ///< The clock model is iterating towards validity
+        CLOCK_INVALID		    = 3     ///< The clock model is not valid
     };
     /// \brief UTC Status
     /// \ingroup oem7data
     enum {
-        UTC_INVALID	            = 0,    ///< Invalid 
+        UTC_INVALID	            = 0,    ///< Invalid
         UTC_VALID	            = 1,    ///< Valid
         UTC_WARNING	            = 2     ///< Warning (Indicates that the leap second value is used as a default due to the lack of an almanac)
     };
@@ -209,6 +279,30 @@ namespace oem7 {
         char boot[16];      ///< Boot code version, see https://docs.novatel.com/OEM7/Content/Logs/VERSION.htm#VERSIONLogFieldFormats
         char compdate[12];  ///< Firmware compile date in the format: \c YYYY/Mmm/DD
         char comptime[12];  ///< Firmware compile time in the format: \c HH:MM:SS
+    };
+    /// \struct oem7::HWMonitor oem7.h
+    /// \brief \c HWMONITOR Binary structure
+    /// \details Monitor hardware levels
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/HWMONITOR.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
+    struct ATTR_PACKED HWMonitor {
+        float value;                ///< Temperature, antenna current or voltage reading
+        uint8_t boundary;           ///< Boundary Limit Status
+        uint8_t type;               ///< Reading Type
+        uint8_t status[2];          ///< Unused
+    };
+    /// \struct oem7::RxStatusEvent 
+    /// \brief \c RXSTATUSEVENT
+    /// \details Status event indicator
+    /// \details https://docs.novatel.com/OEM7/Content/Logs/RXSTATUSEVENT.htm
+    /// \details \ref strualign "Structure alignment"
+    /// \ingroup oem7data
+    struct ATTR_PACKED RxStatusEvent {
+        uint32_t word;          // The status word that generated the event message
+        uint32_t bitmask;       // Location of the bit in the status word
+        uint32_t event;         // Event type: 0 - CLEAR, 1 - SET
+        char description[32];   // This is a text description of the event or error
     };
     /// \struct oem7::RxStatus oem7.h
     /// \brief \c RXSTATUS Binary structure
@@ -342,6 +436,12 @@ namespace oem7 {
 #ifdef WIN32
 #pragma pack(pop)
 #endif
+    extern const char* txterror[33];
+    extern const char* txtstatus[33];
+    extern const char* txtaux1[33];
+    extern const char* txtaux2[33];
+    extern const char* txtaux3[33];
+    extern const char* txtaux4[33];
 }
 
 #endif // __OEM7_H__

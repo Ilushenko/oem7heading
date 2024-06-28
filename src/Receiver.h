@@ -36,12 +36,6 @@ namespace oem7 {
         /// \brief Destructor
         ~Receiver() {}
     public:
-        /// \brief Factory reset
-        /// \details Clears selected data from NVM and reset
-        /// \details After reseting restore baud rate
-        /// \details Arduino platform only
-        /// \note Erase all user settings!
-        void reset();
         /// \brief Starting working GNSS module
         /// \details Call this method at the beginning of the program
         void begin();
@@ -51,12 +45,22 @@ namespace oem7 {
         /// \brief Update data of GNSS module
         /// \details To be called in the main program loop
         void update();
+        /// \brief Factory reset
+        /// \details Clears selected data from NVM and reset
+        /// \details After reseting restore baud rate
+        /// \details Arduino platform only
+        /// \note Erase all user settings!
+        void reset();
+        /// \brief Configure device
+        /// \details Change default device settings: antenna, status, jammer detection sensitivity etc
+        /// \details Call thie method before \c Receiver::begin()
+        void config();
     public:
         /// @{
         /// \name Getters
 
         /// \return Number of version components (cards, and so on)
-        inline uint32_t versionComp() const { return _versionIdx; }
+        inline uint32_t versionComponent() const { return _versionIdx; }
         /// \brief Version getter
         /// \param idx Index of version component
         /// \return Version structure reference
@@ -64,11 +68,13 @@ namespace oem7 {
         /// \return Data valid flag
         inline bool isValid() const { return _valid; }
         /// \return Jamming detected
-        inline bool isJamming() const { return _jamming; }
+        inline bool isJamming() const { return (_rxstatus.rxstat & 0x00008000); }
         /// \return Spoofing detected
-        inline bool isSpoofing() const { return _spoofing; }
+        inline bool isSpoofing() const { return _rxstatus.rxstat & 0x00000200; }
+        /// \return Bestpos position type (See: \b Position \b or \b Velocity \b Type enumerator)
+        inline uint8_t positionType() const { return _bestpos.positionType; }
         /// \return Heading position type (See: \b Position \b or \b Velocity \b Type enumerator)
-        inline uint8_t headingPositionType() const { return _heading.positionType; }
+        inline uint8_t headingType() const { return _heading.positionType; }
         /// \return Latitude (degrees)
         inline double lat() const { return _bestpos.lat; }
         /// \return Longitude (degrees)
@@ -128,49 +134,31 @@ namespace oem7 {
         /// \return \c true if serial available or \c false if timeout
         bool waitAvailable(const unsigned long timeout) const;
     private:
-        /// \return Receiver errors or warnings detected
-        bool checkDevice();
-        /// \return Antenna primary and secondary antenna errors
-        bool checkAntenna();
-        /// \return RTK status
-        bool checkRTK();
-        /// \return Jamming detection
-        bool checkJamming();
-        /// \return Spoofing detection
-        bool checkSpoofing();
-    private:
+        /// \brief Print hardware monitor parameters
+        /// \details Print hardware monitor temperature, antenna current and voltages
+        /// \param boundary Boundary limit status of oem7::HWMonitor structure
+        /// \param type Reading type of oem7::HWMonitor structure
+        /// \param value Temperature, antenna current or voltage reading of oem7::HWMonitor structure
+        static void hardwareInfo(const uint8_t boundary, const uint8_t type, const float value);
+        /// \brief Print status info
+        /// \details Print information about receiver and auxiliary bitmask
+        /// \param word Status word of oem7::RxStatus structure
+        /// \param bitmask receiver error, receiver status or auxiliary status of oem7::RxStatus structure
+        static void statusInfo(const uint8_t word, const uint32_t bitmask);
 	    /// \brief Calculates the CRC-32 of a block of data all at once
 	    /// \param buffer Data block buffer
 	    /// \param size Data block size (in bytes)
 	    /// \return CRC for data verification
-	    inline static uint32_t crc32block(const uint8_t* buffer, size_t size)
-        {
-            auto crc32value = [](uint32_t val) {
-                for (uint8_t i = 8; i > 0; i--) {
-                    if (val & 1)
-                        val = (val >> 1) ^ 0xEDB88320L;
-                    else
-                        val >>= 1;
-                }
-                return val;
-            };
-            uint32_t t1, t2;
-            uint32_t crc = 0;
-            while (size-- != 0) {
-                t1 = (crc >> 8) & 0x00FFFFFFL;
-                t2 = crc32value((crc ^ *buffer++) & 0xFF);
-                crc = t1 ^ t2;
-            }
-            return crc;
-        }
+        static uint32_t crc32(const uint8_t* buffer, size_t size);
     private:
         SERIALPORT& _serial;
         bool _valid{ false };
-        bool _jamming{ false };
-        bool _spoofing{ false };
         uint32_t _versionIdx{ 0 };
+        uint32_t _measurement{ 0 };
         Version _version[8]{ 0 };
+        HWMonitor _monitor[10]{ 0 };
 	    RxStatus _rxstatus{ 0 };
+        RxStatusEvent _event{ 0 };
 	    Time _time{ 0 };
 	    BestPos _bestpos{ 0 };
 	    DualAntHeading _heading{ 0 };

@@ -14,7 +14,7 @@
 int main(int argc, char** argv)
 {
 	serialib serial;
-    char err = serial.openDevice(PORT, 9600);
+    char err = serial.openDevice(PORT, 115200);
     if (err != 1) {
 		printf("Error opening %s: %i\n", PORT, static_cast<int>(err));
         return -1;
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 	oem7::Receiver gnss(serial);
 	gnss.begin();
 	// Print Version
-	const uint32_t vx = gnss.versionComp();
+	const uint32_t vx = gnss.versionComponent();
 	printf("#VERSION [ Number: %u\n", vx);
 	for (uint32_t i = 0; i < vx; ++i) {
 		printf(" Type: %u, Model: %s, PSN: %s, HW: %s, SW: %s, Boot: %s, Date: %s, Time: %s\n",
@@ -56,6 +56,7 @@ int main(int argc, char** argv)
 			&gnss.version(i).comptime[0]
 		);
 	}
+	printf("]\n");
 	// Loop
 	uint32_t year;
 	uint8_t month, day, hour, minute, second;
@@ -68,7 +69,7 @@ int main(int argc, char** argv)
 			printf("UTC Time: %04u-%02u-%02u %02u:%02u:%02u\n", year, month, day, hour, minute, second);
 		}
 
-		switch (gnss.headingPositionType()) {
+		switch (gnss.headingType()) {
 		case oem7::POS_NARROW_FLOAT:
 			printf("RTK: solution with unresolved, float carrier phase ambiguities\n");
 			break;
@@ -79,7 +80,7 @@ int main(int argc, char** argv)
 			printf("RTK: solution with carrier phase ambiguities resolved to narrow-lane integers\n");
 			break;
 		default:
-			printf("RTK: solution with no carrier: %u\n", gnss.headingPositionType());
+			printf("RTK: solution with no carrier: %u\n", gnss.headingType());
 			continue;
 		}
 
@@ -93,12 +94,9 @@ int main(int argc, char** argv)
 	}
 	// Exit
 	gnss.stop();
+	std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	serial.closeDevice();
 	printf("Close serial: %s\n", PORT);
-#ifdef WIN32
-	::Sleep(10);
-#else
-	usleep(10);
-#endif
+	std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	return 0;
 }

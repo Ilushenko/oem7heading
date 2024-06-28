@@ -14,7 +14,7 @@ void setup()
   serial.begin(115200, SERIAL_8N1, 5, 18);
   gnss.begin();
   // Print Version
-  const uint32_t vx	= gnss.versionComp();
+  const uint32_t vx	= gnss.versionComponent();
   Serial.printf("#VERSION [ Number: %u\n", vx);
   for (uint32_t i = 0; i < vx; ++i) {
 	Serial.printf(" Type: %u, Model: %s, PSN: %s, HW: %s, SW: %s, Boot: %s, Date: %s, Time: %s\n",
@@ -43,7 +43,7 @@ void loop()
     Serial.printf("UTC Time: %04u-%02u-%02u %02u:%02u:%02u\n", year, month, day, hour, minute, second);
   }
 
-  switch (gnss.headingPositionType()) {
+  switch (gnss.headingType()) {
   case oem7::POS_NARROW_FLOAT:
     Serial.printf("RTK: solution with unresolved, float carrier phase ambiguities\n");
     break;
@@ -54,7 +54,7 @@ void loop()
     Serial.printf("RTK: solution with carrier phase ambiguities resolved to narrow-lane integers\n");
     break;
   default:
-    Serial.printf("RTK: solution with no carrier: %u\n", gnss.headingPositionType());
+    Serial.printf("RTK: solution with no carrier: %u\n", gnss.headingType());
     return;
   }
 
